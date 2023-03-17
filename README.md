@@ -53,7 +53,7 @@ Applicazione di messaggistica.
 - trovare il modo di far scorrere automaticamente in giù quando invii un messaggio
 -nella lista degli utenti far apparire l'ultimo messaggio inviato / ricevuto
 - Creare un array di risposte (così non risponde sempre la stessa cosa)
-
+- Sistemare la search bar
 
 
 

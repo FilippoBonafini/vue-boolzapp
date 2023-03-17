@@ -2,12 +2,12 @@
 
 // INIZIALIZZIAMO VUE 
 const { createApp } = Vue
-
+const DateTime = luxon.DateTime;
 // STRUTTURA DI VUE 
 createApp({
   data() {
     return {
-      dateNow: '10/01/2020 15:30:55',
+      dateNow: DateTime.now().toISO(),
       activeContact: 0,
       newMessage: '',
       searchKey: '',
@@ -19,17 +19,17 @@ createApp({
           visible: true,
           messages: [
             {
-              date: '10/01/2020 15:30:55',
+              date: '2023-03-17T15:21:08.644+01:00',
               message: 'Hai portato a spasso il cane?',
               status: 'sent'
             },
             {
-              date: '10/01/2020 15:50:00',
+              date: '2023-03-17T15:22:08.644+01:00',
               message: 'Ricordati di stendere i panni',
               status: 'sent'
             },
             {
-              date: '10/01/2020 16:15:22',
+              date: '2023-03-17T15:24:08.644+01:00',
               message: 'Tutto fatto!',
               status: 'received'
             }
@@ -41,17 +41,17 @@ createApp({
           visible: true,
           messages: [
             {
-              date: '20/03/2020 16:30:00',
+              date: '2023-03-17T15:26:08.644+01:00',
               message: 'Ciao come stai?',
               status: 'sent'
             },
             {
-              date: '20/03/2020 16:30:55',
+              date: '2023-03-17T15:26:08.644+01:00',
               message: 'Bene grazie! Stasera ci vediamo?',
               status: 'received'
             },
             {
-              date: '20/03/2020 16:35:00',
+              date: '2023-03-17T15:26:08.644+01:00',
               message: 'Mi piacerebbe ma devo andare a fare la spesa.',
               status: 'sent'
             }
@@ -63,17 +63,17 @@ createApp({
           visible: true,
           messages: [
             {
-              date: '28/03/2020 10:10:40',
+              date: '2023-03-17T15:26:08.644+01:00',
               message: 'La Marianna va in campagna',
               status: 'received'
             },
             {
-              date: '28/03/2020 10:20:10',
+              date: '2023-03-17T15:26:08.644+01:00',
               message: 'Sicuro di non aver sbagliato chat?',
               status: 'sent'
             },
             {
-              date: '28/03/2020 16:15:22',
+              date: '2023-03-17T15:26:08.644+01:00',
               message: 'Ah scusa!',
               status: 'received'
             }
@@ -85,12 +85,12 @@ createApp({
           visible: true,
           messages: [
             {
-              date: '10/01/2020 15:30:55',
+              date: '2023-03-17T15:26:08.644+01:00',
               message: 'Lo sai che ha aperto una nuova pizzeria?',
               status: 'sent'
             },
             {
-              date: '10/01/2020 15:50:00',
+              date: '2023-03-17T15:26:08.644+01:00',
               message: 'Si, ma preferirei andare al cinema',
               status: 'received'
             }
@@ -102,12 +102,12 @@ createApp({
           visible: true,
           messages: [
             {
-              date: '10/01/2020 15:30:55',
+              date: '2023-03-17T15:26:08.644+01:00',
               message: 'Ricordati di chiamare la nonna',
               status: 'sent'
             },
             {
-              date: '10/01/2020 15:50:00',
+              date: '2023-03-17T15:26:08.644+01:00',
               message: 'Va bene, stasera la sento',
               status: 'received'
             }
@@ -119,17 +119,17 @@ createApp({
           visible: true,
           messages: [
             {
-              date: '10/01/2020 15:30:55',
+              date: '2023-03-17T15:26:08.644+01:00',
               message: 'Ciao Claudia, hai novità?',
               status: 'sent'
             },
             {
-              date: '10/01/2020 15:50:00',
+              date: '2023-03-17T15:26:08.644+01:00',
               message: 'Non ancora',
               status: 'received'
             },
             {
-              date: '10/01/2020 15:51:00',
+              date: '2023-03-17T15:26:08.644+01:00',
               message: 'Nessuna nuova, buona nuova',
               status: 'sent'
             }
@@ -141,12 +141,12 @@ createApp({
           visible: true,
           messages: [
             {
-              date: '10/01/2020 15:30:55',
+              date: '2023-03-17T15:26:08.644+01:00',
               message: 'Fai gli auguri a Martina che è il suo compleanno!',
               status: 'sent'
             },
             {
-              date: '10/01/2020 15:50:00',
+              date: '2023-03-17T15:26:08.644+01:00',
               message: 'Grazie per avermelo ricordato, le scrivo subito!',
               status: 'received'
             }
@@ -158,17 +158,17 @@ createApp({
           visible: true,
           messages: [
             {
-              date: '10/01/2020 15:30:55',
+              date: '2023-03-17T15:26:08.644+01:00',
               message: 'Ciao, andiamo a mangiare la pizza stasera?',
               status: 'received'
             },
             {
-              date: '10/01/2020 15:50:00',
+              date: '2023-03-17T15:26:08.644+01:00',
               message: 'No, l\'ho già mangiata ieri, ordiniamo sushi!',
               status: 'sent'
             },
             {
-              date: '10/01/2020 15:51:00',
+              date: '2023-03-17T15:26:08.644+01:00',
               message: 'OK!!',
               status: 'received'
             }
@@ -179,6 +179,10 @@ createApp({
     }
   },
   methods: {
+    // TRASFORMA LE DATE ISO IN DATE ES.12:45
+    dataIsoToTime(dataISO) {
+      return (DateTime.fromISO(dataISO).toFormat('T'));
+    },
     // VERIFICA QUAL'E' L'UTENTE ATTIVO E RESTITUISCE LE CLASSI
     activeVerify(index) {
       if (index === this.activeContact) {
@@ -190,7 +194,7 @@ createApp({
     // INVIA IL MESSAGGIO 
     sendMessage() {
       let newMessage = {
-        date: this.dateNow,
+        date: this.dataIsoToTime(this.dateNow) ,
         message: this.newMessage,
         status: 'sent'
       }
@@ -217,12 +221,14 @@ createApp({
       }
     },
     // APRI I MENU DELLE CHAT 
-    toggleChatMenu(){
-        this.openChatClass = !this.openChatClass;
+    toggleChatMenu() {
+      this.openChatClass = !this.openChatClass;
     },
-    deleteMessage(index){
-      this.contacts[this.activeContact].messages.splice(index,1);
-    }
+    // ELIMINA UN MESSAGGIO 
+    deleteMessage(index) {
+      this.contacts[this.activeContact].messages.splice(index, 1);
+      console.log(data)
+    },
 
 
 

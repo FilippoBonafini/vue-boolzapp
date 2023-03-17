@@ -25,6 +25,12 @@ li{
 .inesistent{
     display: none !important;
 }
+.profile-img{
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .profile-img img{
     max-width: 100%;
     height: auto;
@@ -64,10 +70,7 @@ li{
     color: rgb(100, 100, 100);
     padding: 10px;
 }
-.main .profile-img{
-    height: 60px;
-    width: 60px;
-}
+
 /* COMMON APP */
 /* ---------- */
 #screen{
@@ -155,16 +158,19 @@ li{
 #boxContacts .userList{
     background-color: white;
     flex-grow: 1;
+    overflow-x: hidden;
     overflow-y: auto;
 }
+
 #boxContacts .userList .user{
-    height: 80px;
     background-color: rgb(255, 255, 255);
     display: flex;
     padding: 10px;
     gap: 10px;
     border-bottom: 0.5px solid rgb(242, 242, 242);
     cursor: pointer;
+    position: relative;
+    max-height: 85px;
 }
 #boxContacts .userList .user:hover{
     background-color: rgb(235, 235, 235);
@@ -173,10 +179,12 @@ li{
     background-color: rgb(213, 213, 213);
 }
 #boxContacts .userList .user .name-msg{
-    flex-grow: 1;
+    width: 80%;
+    overflow: hidden;
 }
 #boxContacts .userList .user .info{
-    flex-grow: 0;
+    position: absolute;
+    right: 10px;
 }
 /* BOX CHAT (CORPO DI DESTRA) */
 /* -------------------------- */
