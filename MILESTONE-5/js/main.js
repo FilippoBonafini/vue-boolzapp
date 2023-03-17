@@ -178,12 +178,15 @@ createApp({
     }
   },
   methods: {
+    // VERIFICA QUAL'E' L'UTENTE ATTIVO E RESTITUISCE LE CLASSI
     activeVerify(index) {
       if (index === this.activeContact) {
         return ('active');
       }
     },
+    // SELEZIONA UN UTENTE DAL MENU DI SINSITRA 
     selectUser(index) { this.activeContact = index },
+    // INVIA IL MESSAGGIO 
     sendMessage(index) {
       let newMessage = {
         date: this.dateNow,
@@ -193,6 +196,7 @@ createApp({
       this.contacts[index].messages.push(newMessage);
       this.newMessage = ''
     },
+    // RISPOSTA AUTOMATICA DA PARTE DEL PC 
     autoMessage(index) {
       let newMessage = {
         date: this.dateNow,
@@ -203,6 +207,7 @@ createApp({
         this.contacts[index].messages.push(newMessage);
       }, 3000)
     },
+    // FILTRA LA LISTA DI CONTATTI 
     filteredList() {
       if (this.searchKey !== '') {
         return this.contacts.filter(element => (element.name).toLowerCase().includes(this.searchKey.toLowerCase()));
