@@ -218,15 +218,10 @@ createApp({
     },
     // APRI I MENU DELLE CHAT 
     toggleChatMenu(){
-      if(this.openChatClass === false){
-        this.openChatClass = true;
-      }else{
-        this.openChatClass = false;
-      }
+        this.openChatClass = !this.openChatClass;
     },
     deleteMessage(index){
-      // this.contacts[index].messages.splice(index,1);
-      console.log(this.contacts[activeContact].messages[index])
+      this.contacts[this.activeContact].messages.splice(index,1);
     }
 
 
