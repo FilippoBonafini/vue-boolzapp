@@ -1,0 +1,234 @@
+/* RESET  */
+/* ------ */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* COMMON */
+/* ------ */
+body{
+    font-family: 'Poppins', sans-serif;
+    background: rgb(34,193,195);
+    background: linear-gradient(0deg, rgb(255, 255, 255) 90%, rgb(22, 172, 134) 10%);
+    height: 100vh;
+    width: 100vw;
+}
+a{
+    color: rgb(61, 61, 61);
+    font-size: 15px;
+}
+.inesistent{
+    display: none !important;
+}
+.profile-img img{
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+.text-smal{
+    font-size: 14px;
+    color: rgb(126, 124, 124);
+}
+.text-smaller{
+    font-size: 12px;
+    color: rgb(126, 124, 124);
+}
+.header{
+    background-color: rgb(228, 228, 228);
+    border-right: 1px solid rgb(106, 106, 106);
+    height: 65px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+}
+.header .profile-img{
+    height: 50px;
+    width: 50px;
+}
+.header .user-name{
+    flex-grow: 1;
+    padding: 0 10px;
+}
+
+.header .icons{
+    display: flex;
+    gap: 20px;
+    font-size: 20px;
+    color: rgb(100, 100, 100);
+    padding: 10px;
+}
+.main .profile-img{
+    height: 60px;
+    width: 60px;
+}
+/* COMMON APP */
+/* ---------- */
+#screen{
+    background-color: rgba(0, 0, 0, 0.05);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#app{
+    background-color: white;
+     width: 1200px;
+    height: 95vh;
+    display: flex;
+    border-radius: 20px;
+    box-shadow: 0px 0px 32px 8px #A6A6A6;
+}
+#boxContacts{
+    width: 360px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 15px 0 0 15px;
+    user-select: none;
+}
+#boxChat{
+    flex-grow: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 0 15px 15px 0;
+
+}
+
+/* BOX CONTACTS (MENU SINISTRA) */
+/* ---------------------------- */
+
+/* MAIN CONTATTI  */
+#boxContacts .main{
+    background-color: #fafafa;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+/* MESSAGGIO ATTIVA NOTIFICHE */
+#boxContacts .main .notifyAlert{
+    background-color: rgb(147, 201, 232);
+    height: 80px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    gap: 17px;
+}
+#boxContacts .main .notifyAlert .notifyIcon{
+    background-color: rgb(255, 255, 255);
+    color: rgb(147, 201, 232);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+}
+/* SEARCH BAR  */
+.searchBar{
+    background-color: #fafafa;
+    padding: 10px;
+}
+.searchBar #searchUser{
+    width: 100%;
+    font-size: 20px;
+    padding: 3px;
+    border: 0.3px solid rgb(214, 214, 214);
+    border-radius: 6px;
+}
+/* LISTA DELLE CHAT */
+#boxContacts .userList{
+    background-color: white;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+#boxContacts .userList .user{
+    height: 80px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    padding: 10px;
+    gap: 10px;
+    border-bottom: 0.5px solid rgb(242, 242, 242);
+    cursor: pointer;
+}
+#boxContacts .userList .user:hover{
+    background-color: rgb(235, 235, 235);
+}
+#boxContacts .userList .user.selected{
+    background-color: rgb(238, 236, 236);
+}
+#boxContacts .userList .user .name-msg{
+    flex-grow: 1;
+}
+#boxContacts .userList .user .info{
+    flex-grow: 0;
+}
+/* BOX CHAT (CORPO DI DESTRA) */
+/* -------------------------- */
+/* HEADER CHAT */
+#boxChat .header{
+    border-left: 1px solid #fafafa;
+    border-right: none;
+}
+
+/* MAIN CHAT */
+#boxChat .main{
+    flex-grow: 1;
+    overflow-y: auto;
+    background-image: url(../img/mine.jpg);
+}
+#boxChat .main .message-row{
+    padding: 20px;
+    margin: 3px;
+    display: flex;
+}
+#boxChat .main .message-body{
+    display: inline-block;
+    background-color: white;
+    padding: 6px;
+    border-radius: 10px;
+    min-width: 100px;
+    max-width: 500px;
+    overflow-wrap: break-word;
+}
+#boxChat .main .message-body .message-data{
+   text-align: right;
+   padding-top: 4px;
+}
+#boxChat .main .message-body.sent{
+    background-color: rgb(197, 252, 197);
+    margin-left: auto;
+}
+#boxChat .main .message-body.recive{
+    background-color: white;
+}
+/* INVIO MESSAGGI CHAT (FOOTER) */
+#boxChat .footer{
+    background-color: #f3eeea;
+    padding: 15px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+#boxChat .footer input{
+    height: 40px;
+    font-size: 14px;
+    flex-grow: 1;
+    padding: 13px 5px;
+    border: .3px solid rgb(224, 224, 224);
+    border-radius: 8px;
+}
+#boxChat .footer i{
+    font-size: 25px;
+}
