@@ -221,6 +221,18 @@ li{
     overflow-wrap: break-word;
     position: relative;
 }
+.boxChat .main .no-msg{
+    display: flex;
+    height: 30%;
+    align-items: center;
+    justify-content: center;
+}
+.boxChat .main .no-msg .msg{
+    font-size: 16px;
+    background-color: rgba(206, 251, 251, 0.784);
+    padding: 10px;
+    border-radius: 30px;
+}
 .boxChat .main .message-body .message-data{
    text-align: right;
    padding-top: 4px;

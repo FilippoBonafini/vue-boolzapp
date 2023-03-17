@@ -102,7 +102,7 @@
                 <!-- /HEADER CHAT  -->
                 <!-- CORPO PRINCIPALE CHAT  -->
                 <div class="main">
-                    <div class="message-row" v-for="(message,index) in contacts[activeContact].messages">
+                    <div class="message-row" v-if="contacts[activeContact].messages.length > 0" v-for="(message,index) in contacts[activeContact].messages">
                         <div class="message-body" :class="message.status">
                             <div class="message-text">{{message.message}}</div>
                             <div class="message-data text-smaller">{{dataIsoToTime(message.date)}}</div>
@@ -116,6 +116,9 @@
                             </div>
                             <!-- /MENU A COMPARSA NEI MESSAGGI  -->
                         </div>
+                    </div>
+                    <div v-else class="no-msg">
+                        <div class="msg">Inizia una conversazione con {{contacts[activeContact].name}}</div>
                     </div>
                 </div>
                 <!-- /CORPO PRINCIPALE CHAT  -->
