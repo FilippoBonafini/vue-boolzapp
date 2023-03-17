@@ -54,12 +54,12 @@
                     <!-- BARRA DI RICERCA CHAT  -->
                     <div class="searchBar">
                         <label class="inesistent" for="searchUser">Search User</label>
-                        <input type="text" name="searchUser" id="searchUser" placeholder="&#xF002; Search" style="font-family:Arial, FontAwesome;">
+                        <input type="text" name="searchUser" id="searchUser" placeholder="&#xF002; Search" style="font-family:Arial, FontAwesome;" v-model="searchKey" @keyup="filteredList">
                     </div>
                     <!-- /BARRA DI RICERCA CHAT  -->
                     <!-- LISTA DELLE VARIE CHAT -->
                     <div class="userList">
-                        <div class="user" :class="activeVerify(index)" v-for="(contact,index) in contacts" @click="selectUser(index)">
+                        <div class="user" :class="activeVerify(index)" v-for="(contact,index) in filteredList()" @click="selectUser(index)">
                             <div class="profile-img">
                                 <img :src="contact.avatar" alt="">
                             </div>
