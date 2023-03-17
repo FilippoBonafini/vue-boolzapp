@@ -22,6 +22,14 @@ a{
 li{
     list-style: none;
 }
+i{
+    cursor: pointer;
+    color: grey;
+}
+
+i.fa-paper-plane{
+    color: rgb(54, 181, 54);
+}
 .inesistent{
     display: none !important;
 }

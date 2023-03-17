@@ -3,6 +3,8 @@
 // INIZIALIZZIAMO VUE 
 const { createApp } = Vue
 const DateTime = luxon.DateTime;
+
+
 // STRUTTURA DI VUE 
 createApp({
   data() {
@@ -179,13 +181,17 @@ createApp({
     selectUser(index) { this.activeContact = index },
     // INVIA IL MESSAGGIO 
     sendMessage() {
-      let newMessage = {
-        date: this.dataIsoToTime(this.dateNow),
-        message: this.newMessage,
-        status: 'sent'
+      if (this.newMessage !== '') {
+        let newMessage = {
+          date: this.dataIsoToTime(this.dateNow),
+          message: this.newMessage,
+          status: 'sent'
+        }
+        this.scrollBottom('.main')
+        this.contacts[this.activeContact].messages.push(newMessage);
+        this.newMessage = '';
+        this.autoMessage();
       }
-      this.contacts[this.activeContact].messages.push(newMessage);
-      this.newMessage = ''
     },
     // RISPOSTA AUTOMATICA DA PARTE DEL PC 
     autoMessage() {
@@ -195,6 +201,7 @@ createApp({
         status: 'received'
       }
       setTimeout(() => {
+        this.scrollBottom('.main');
         this.contacts[this.activeContact].messages.push(newMessage);
       }, 3000)
     },
@@ -233,8 +240,11 @@ createApp({
       } else {
         return ('')
       }
+    },
+    // FUNZIONE CHE SROLLA AUTOMATICAMENTE LA PAGINA§ 
+    scrollBottom() {
+      let element = document.querySelector('.boxChat .main')
+      element.scroll({ top: element.scrollHeight, behavior: 'smooth' });
     }
-
-
   }
 }).mount('#app');
