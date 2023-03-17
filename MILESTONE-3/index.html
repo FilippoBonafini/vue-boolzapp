@@ -108,7 +108,7 @@
                 <div class="footer">
                     <div><i class="fa-regular fa-face-smile"></i></div>
                     <label class="inesistent" for="message">message</label>
-                    <input type="text" name="message" id="message" v-model="newMessage" @keyup.enter="sendMessage(index)">
+                    <input type="text" name="message" id="message" v-model="newMessage" @keyup.enter="sendMessage(index),autoMessage(index)">
                     <div><i class="fa-solid fa-microphone"></i></div>
                 </div>
                 <!-- /SEZIONE DI INVIO MESSAGGI CHAT  -->

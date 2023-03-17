@@ -7,6 +7,7 @@ const { createApp } = Vue
 createApp({
   data() {
     return {
+      dateNow: '10/01/2020 15:30:55',
       activeContact: 0,
       newMessage: '',
       contacts: [
@@ -184,12 +185,22 @@ createApp({
     selectUser(index) { this.activeContact = index },
     sendMessage(index){
       let newMessage ={
-        date: '10/01/2020 15:51:00',
+        date: this.dateNow,
         message: this.newMessage,
         status: 'sent'
       }
       this.contacts[index].messages.push(newMessage);
       this.newMessage = ''
+    },
+    autoMessage(index){
+      let newMessage={
+        date: this.dateNow,
+        message: 'ho ricevuto il messaggio',
+        status: 'received'
+      }
+      setTimeout (() =>{
+        this.contacts[index].messages.push(newMessage);
+      },3000)
     }
 
   }
