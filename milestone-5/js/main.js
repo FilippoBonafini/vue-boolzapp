@@ -244,7 +244,9 @@ createApp({
     // FUNZIONE CHE SROLLA AUTOMATICAMENTE LA PAGINA§ 
     scrollBottom() {
       let element = document.querySelector('.boxChat .main')
-      element.scroll({ top: element.scrollHeight, behavior: 'smooth' });
+      setTimeout(() => {
+        element.scroll({ top: 100000000, behavior: 'smooth' });
+      }, 1)
     }
   }
 }).mount('#app');
