@@ -47,3 +47,8 @@ Applicazione di messaggistica.
  - [GOOGLE FONT](https://fonts.google.com/knowledge)
 
 
+## TO DO:
+- sistemare la spaziatura tra un messaggio e l'altro
+- far comparire il bottone invio e scomparire il registratore audio quando c'è scritto qualcosa nell'input di invio messaggi
+- trovare il modo di far scorrere automaticamente in giù quando invii un messaggio
+-nella lista degli utenti far apparire l'ultimo messaggio inviato / ricevuto
