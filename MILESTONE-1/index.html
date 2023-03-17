@@ -58,23 +58,13 @@
                     </div>
                     <!-- /BARRA DI RICERCA CHAT  -->
                     <!-- LISTA DELLE VARIE CHAT -->
-                    <div class="userList">
+                    <div class="userList" v-for="(contact,index) in contacts">
                         <div class="user">
                             <div class="profile-img">
-                                <img src="img/avatar_3.jpg" alt="">
+                                <img :src="contact.avatar" alt="">
                             </div>
                             <div class="info">
-                                <div class="name-user">Filippo</div>
-                                <div class="last msg">last message</div>
-                            </div>
-                            <div class="info">3.30</div>
-                        </div>
-                        <div class="user selected">
-                            <div class="profile-img">
-                                <img src="img/avatar_6.jpg" alt="">
-                            </div>
-                            <div class="info">
-                                <div class="name-user">Filippo</div>
+                                <div class="name-user">{{contact.name}}</div>
                                 <div class="last msg">last message</div>
                             </div>
                             <div class="info">3.30</div>
