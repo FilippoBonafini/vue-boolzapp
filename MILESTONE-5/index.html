@@ -77,14 +77,14 @@
             <!-- /BOX SINISTRO DEI CONTATTI  -->
 
             <!-- BOX DESTRO DELLA CHAT  -->
-            <div class="boxChat" v-for="(user,index) in contacts" :class="activeVerify(index)">
+            <div class="boxChat">
                 <!-- HEADER CHAT  -->
                 <div class="header">
                     <div class="profile-img">
-                        <img :src="user.avatar" alt="myImg">
+                        <img alt="myImg" :src="contacts[activeContact].avatar">
                     </div>
                     <div class="user-name">
-                        <div class="name">{{user.name}}</div>
+                        <div class="name">{{contacts[activeContact].name}}</div>
                         <div class="text-smal">Ultimo accesso</div>
                     </div>
                     <div class="icons">
@@ -96,7 +96,7 @@
                 <!-- /HEADER CHAT  -->
                 <!-- CORPO PRINCIPALE CHAT  -->
                 <div class="main">
-                    <div class="message-row" v-for="(message,index) in user.messages">
+                    <div class="message-row" v-for="(message,index) in contacts[activeContact].messages">
                         <div class="message-body" :class="message.status">
                             <div class="message-text">{{message.message}}</div>
                             <div class="message-data text-smaller">12:09</div>
@@ -117,7 +117,7 @@
                 <div class="footer">
                     <div><i class="fa-regular fa-face-smile"></i></div>
                     <label class="inesistent" for="message">message</label>
-                    <input type="text" name="message" id="message" v-model="newMessage" @keyup.enter="sendMessage(index),autoMessage(index)">
+                    <input type="text" name="message" id="message" v-model="newMessage" @keyup.enter="sendMessage(),autoMessage()">
                     <div><i class="fa-solid fa-microphone"></i></div>
                 </div>
                 <!-- /SEZIONE DI INVIO MESSAGGI CHAT  -->

@@ -188,24 +188,24 @@ createApp({
     // SELEZIONA UN UTENTE DAL MENU DI SINSITRA 
     selectUser(index) { this.activeContact = index },
     // INVIA IL MESSAGGIO 
-    sendMessage(index) {
+    sendMessage() {
       let newMessage = {
         date: this.dateNow,
         message: this.newMessage,
         status: 'sent'
       }
-      this.contacts[index].messages.push(newMessage);
+      this.contacts[this.activeContact].messages.push(newMessage);
       this.newMessage = ''
     },
     // RISPOSTA AUTOMATICA DA PARTE DEL PC 
-    autoMessage(index) {
+    autoMessage() {
       let newMessage = {
         date: this.dateNow,
         message: 'ho ricevuto il messaggio',
         status: 'received'
       }
       setTimeout(() => {
-        this.contacts[index].messages.push(newMessage);
+        this.contacts[this.activeContact].messages.push(newMessage);
       }, 3000)
     },
     // FILTRA LA LISTA DI CONTATTI 
