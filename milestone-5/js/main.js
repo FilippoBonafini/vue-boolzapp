@@ -181,7 +181,7 @@ createApp({
     selectUser(index) { this.activeContact = index },
     // INVIA IL MESSAGGIO 
     sendMessage() {
-      if (this.newMessage !== '') {
+      if (this.newMessage.replace(/\s+/g, '')!=='') {
         let newMessage = {
           date: this.dataIsoToTime(this.dateNow),
           message: this.newMessage,

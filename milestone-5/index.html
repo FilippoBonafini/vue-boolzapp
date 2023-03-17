@@ -129,7 +129,7 @@
                     <label class="inesistent" for="message">message</label>
                     <input type="text" name="message" id="message" v-model="newMessage"
                         @keyup.enter="sendMessage(),scrollBottom()">
-                    <div v-if="newMessage===''"><i class="fa-solid fa-microphone"></i></div>
+                    <div v-if="newMessage.replace(/\s+/g, '')===''"><i class="fa-solid fa-microphone"></i></div>
                     <div v-else @click="sendMessage(),autoMessage()"><i class="fa-solid fa-paper-plane"></i></div>
                 </div>
                 <!-- /SEZIONE DI INVIO MESSAGGI CHAT  -->
