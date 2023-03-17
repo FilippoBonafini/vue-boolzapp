@@ -27,6 +27,14 @@ a{
     height: auto;
     border-radius: 50%;
 }
+.text-smal{
+    font-size: 14px;
+    color: rgb(126, 124, 124);
+}
+.text-smaller{
+    font-size: 12px;
+    color: rgb(126, 124, 124);
+}
 .header{
     background-color: rgb(228, 228, 228);
     border-right: 1px solid rgb(106, 106, 106);
@@ -82,6 +90,7 @@ a{
     flex-direction: column;
     overflow: hidden;
     border-radius: 15px 0 0 15px;
+    user-select: none;
 }
 #boxChat{
     flex-grow: 1;
@@ -98,7 +107,7 @@ a{
 
 /* MAIN CONTATTI  */
 #boxContacts .main{
-    background-color: rgb(238, 238, 238);
+    background-color: #fafafa;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -127,7 +136,7 @@ a{
 }
 /* SEARCH BAR  */
 .searchBar{
-    background-color: rgb(228, 228, 228);
+    background-color: #fafafa;
     padding: 10px;
 }
 .searchBar #searchUser{
@@ -140,30 +149,35 @@ a{
 /* LISTA DELLE CHAT */
 #boxContacts .userList{
     background-color: white;
+    flex-grow: 1;
     overflow-y: auto;
 }
 #boxContacts .userList .user{
     height: 80px;
     background-color: rgb(255, 255, 255);
     display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 10px;
     gap: 10px;
     border-bottom: 0.5px solid rgb(242, 242, 242);
+    cursor: pointer;
+}
+#boxContacts .userList .user:hover{
+    background-color: rgb(235, 235, 235);
 }
 #boxContacts .userList .user.selected{
     background-color: rgb(238, 236, 236);
 }
-#boxContacts .userList .user .info{
+#boxContacts .userList .user .name-msg{
     flex-grow: 1;
-    
+}
+#boxContacts .userList .user .info{
+    flex-grow: 0;
 }
 /* BOX CHAT (CORPO DI DESTRA) */
 /* -------------------------- */
 /* HEADER CHAT */
 #boxChat .header{
-    border-left: 1px solid rgb(136, 136, 136);
+    border-left: 1px solid #fafafa;
     border-right: none;
 }
 
@@ -189,7 +203,6 @@ a{
 }
 #boxChat .main .message-body .message-data{
    text-align: right;
-   font-size: 14px;
    padding-top: 4px;
 }
 #boxChat .main .message-body.sent{
@@ -201,7 +214,7 @@ a{
 }
 /* INVIO MESSAGGI CHAT (FOOTER) */
 #boxChat .footer{
-    background-color: rgb(227, 221, 200);
+    background-color: #f3eeea;
     padding: 15px;
     display: flex;
     gap: 20px;

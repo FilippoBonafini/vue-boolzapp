@@ -58,16 +58,16 @@
                     </div>
                     <!-- /BARRA DI RICERCA CHAT  -->
                     <!-- LISTA DELLE VARIE CHAT -->
-                    <div class="userList" v-for="(contact,index) in contacts">
-                        <div class="user">
+                    <div class="userList">
+                        <div class="user" v-for="(contact,index) in contacts">
                             <div class="profile-img">
                                 <img :src="contact.avatar" alt="">
                             </div>
-                            <div class="info">
+                            <div class="name-msg">
                                 <div class="name-user">{{contact.name}}</div>
-                                <div class="last msg">last message</div>
+                                <div class="last msg text-smal">last message</div>
                             </div>
-                            <div class="info">3.30</div>
+                            <div class="info text-smal">3.30</div>
                         </div>
                     </div>
                     <!-- /LISTA DELLE VARIE CHAT -->
@@ -84,7 +84,8 @@
                         <img src="img/avatar_1.jpg" alt="myImg">
                     </div>
                     <div class="user-name">
-                        Paolo
+                        <div class="name">Paolo</div>
+                        <div class="text-smal">Ultimo accesso</div>
                     </div>
                     <div class="icons">
                         <i class="fa-solid fa-magnifying-glass"></i>
@@ -98,13 +99,7 @@
                     <div class="message-row">
                         <div class="message-body recive">
                             <div class="message-text">asdas</div>
-                            <div class="message-data">12:09</div>
-                        </div>
-                    </div>
-                    <div class="message-row">
-                        <div class="message-body sent">
-                            <div class="message-text">ciaosdfdsfsddasdasdsadaasdasdsagdvgsavdytgsavgydvasgydvasgydvgasvdgasvdgyvsaysdasdasdaasdasdasdassdas</div>
-                            <div class="message-data">12</div>
+                            <div class="message-data text-smaller">12:09</div>
                         </div>
                     </div>
                 </div>
