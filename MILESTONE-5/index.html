@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- IMPORT CSS  -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- IMPORT FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- IMPORT FONT  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+</head>
+<!-- CORPO DEL PROGETTO -->
+<body>
+    <div id="screen">
+        <!-- APP CONTAINER-------------------------------------------------->
+        <div id="app">
+            <!-- BOX SINISTRO DEI CONTATTI  -->
+            <div id="boxContacts">
+                <!-- HEADER CONTATTI  -->
+                <div class="header">
+                    <div class="profile-img">
+                        <img src="img/avatar_io.jpg" alt="myImg">
+                    </div>
+                    <div class="user-name">
+                        Francesca
+                    </div>
+                    <div class="icons">
+                        <i class="fa-solid fa-circle-notch"></i>
+                        <i class="fa-solid fa-message"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                </div>
+                <!-- /HEADER CONTATTI  -->
+                <!-- CORPO PRINCIPALE CONTATTI  -->
+                <div class="main">
+                    <!-- AREA NOTIFICHE APP  -->
+                    <div class="notifyAlert">
+                        <div class="notifyIcon"><i class="fa-solid fa-bell-slash"></i></div>
+                        <div class="notifyInfo">
+                            <div class="text-notify">Text</div>
+                            <div class="link-notify"><a href="#">link</a></div>
+                        </div>
+                    </div>
+                    <!-- AREA NOTIFICHE APP  -->
+                    <!-- BARRA DI RICERCA CHAT  -->
+                    <div class="searchBar">
+                        <label class="inesistent" for="searchUser">Search User</label>
+                        <input type="text" name="searchUser" id="searchUser" placeholder="&#xF002; Search" style="font-family:Arial, FontAwesome;" v-model="searchKey" @keyup="filteredList">
+                    </div>
+                    <!-- /BARRA DI RICERCA CHAT  -->
+                    <!-- LISTA DELLE VARIE CHAT -->
+                    <div class="userList">
+                        <div class="user" :class="activeVerify(index)" v-for="(contact,index) in filteredList()" @click="selectUser(index)">
+                            <div class="profile-img">
+                                <img :src="contact.avatar" alt="">
+                            </div>
+                            <div class="name-msg">
+                                <div class="name-user">{{contact.name}}</div>
+                                <div class="last msg text-smal">last message</div>
+                            </div>
+                            <div class="info text-smal">3.30</div>
+                        </div>
+                    </div>
+                    <!-- /LISTA DELLE VARIE CHAT -->
+                </div>
+                <!-- /CORPO PRINCIPALE CONTATTI  -->
+            </div>
+            <!-- /BOX SINISTRO DEI CONTATTI  -->
+
+            <!-- BOX DESTRO DELLA CHAT  -->
+            <div id="boxChat" v-for="(user,index) in contacts" :class="activeVerify(index)">
+                <!-- HEADER CHAT  -->
+                <div class="header">
+                    <div class="profile-img">
+                        <img :src="user.avatar" alt="myImg">
+                    </div>
+                    <div class="user-name">
+                        <div class="name">{{user.name}}</div>
+                        <div class="text-smal">Ultimo accesso</div>
+                    </div>
+                    <div class="icons">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <i class="fa-solid fa-paperclip"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                </div>
+                <!-- /HEADER CHAT  -->
+                <!-- CORPO PRINCIPALE CHAT  -->
+                <div class="main">
+                    <div class="message-row" v-for="(message) in user.messages">
+                        <div class="message-body" :class="message.status">
+                            <div class="message-text">{{message.message}}</div>
+                            <div class="message-data text-smaller">12:09</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /CORPO PRINCIPALE CHAT  -->
+                <!-- SEZIONE DI INVIO MESSAGGI CHAT  -->
+                <div class="footer">
+                    <div><i class="fa-regular fa-face-smile"></i></div>
+                    <label class="inesistent" for="message">message</label>
+                    <input type="text" name="message" id="message" v-model="newMessage" @keyup.enter="sendMessage(index),autoMessage(index)">
+                    <div><i class="fa-solid fa-microphone"></i></div>
+                </div>
+                <!-- /SEZIONE DI INVIO MESSAGGI CHAT  -->
+            </div>
+            <!-- /BOX DESTRO DELLA CHAT  -->
+        </div>
+        <!-- /APP CONTAINER------------------------------------------------->
+    </div>
+    
+    <!-- IMPORT JAVASCRIPT---------------------------------------------->
+    <!--VUE-->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!--MY-->
+    <script src="js/main.js"></script>
+    <!--/IMPORT JAVASCRIPT---------------------------------------------->
+
+</body>
+<!-- /CORPO DEL PROGETTO  -->
+</html>
