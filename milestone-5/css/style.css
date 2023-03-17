@@ -348,12 +348,16 @@ i.fa-paper-plane {
 }
 
 .boxChat .footer input {
-    height: 40px;
-    font-size: 14px;
+    font-size: 16px;
     flex-grow: 1;
     padding: 13px 5px;
     border: .3px solid rgb(224, 224, 224);
     border-radius: 8px;
+    overflow-wrap: break-word;
+}
+
+.boxChat .footer input:focus {
+    border-color: red;
 }
 
 .boxChat .footer i {
