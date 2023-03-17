@@ -69,9 +69,8 @@ a{
 }
 #app{
     background-color: white;
-    width: 1200px;
-    max-width: 1200px;
-    height: 90vh;
+     width: 1200px;
+    height: 95vh;
     display: flex;
     border-radius: 20px;
 }
@@ -138,12 +137,12 @@ a{
     border-radius: 6px;
 }
 /* LISTA DELLE CHAT */
-.userList{
+#boxContacts .userList{
     background-color: white;
     flex-grow: 1;
     overflow-y: auto;
 }
-.userList .user{
+#boxContacts .userList .user{
     height: 80px;
     background-color: rgb(255, 255, 255);
     display: flex;
@@ -153,10 +152,10 @@ a{
     gap: 10px;
     border-bottom: 0.5px solid rgb(242, 242, 242);
 }
-.userList .user.selected{
+#boxContacts .userList .user.selected{
     background-color: rgb(238, 236, 236);
 }
-.userList .user .info{
+#boxContacts .userList .user .info{
     flex-grow: 1;
 }
 /* BOX CHAT (CORPO DI DESTRA) */
@@ -184,6 +183,13 @@ a{
     padding: 6px;
     border-radius: 10px;
     min-width: 100px;
+    max-width: 500px;
+    overflow-wrap: break-word;
+}
+#boxChat .main .message-body .message-data{
+   text-align: right;
+   font-size: 14px;
+   padding-top: 4px;
 }
 #boxChat .main .message-body.sent{
     background-color: rgb(197, 252, 197);
@@ -203,7 +209,7 @@ a{
 }
 #boxChat .footer input{
     height: 40px;
-    font-size: 24px;
+    font-size: 14px;
     flex-grow: 1;
     padding: 13px 5px;
     border: .3px solid rgb(224, 224, 224);
