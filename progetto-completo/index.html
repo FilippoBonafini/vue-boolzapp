@@ -92,7 +92,11 @@
                     </div>
                     <div class="user-name">
                         <div class="name">{{contacts[activeContact].name}}</div>
-                        <div class="text-smal">Ultimo accesso</div>
+
+                        <div class="text-smal" v-if="contacts[activeContact].writing">Sta scrivendo...</div>
+                        <div class="text-smal" v-else-if="contacts[activeContact].onlineStatus">Online</div>
+                        <div class="text-smal" v-else>Ultimo accesso: {{dataIsoToTime(contacts[activeContact].lastEnter)}}</div>
+
                     </div>
                     <div class="icons">
                         <i class="fa-solid fa-magnifying-glass"></i>

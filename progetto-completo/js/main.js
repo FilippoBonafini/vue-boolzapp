@@ -19,6 +19,9 @@ createApp({
           name: 'Michele',
           avatar: 'img/avatar_1.jpg',
           visible: true,
+          onlineStatus: false,
+          writing: false,
+          lastEnter: '2023-03-17T15:24:08.644+01:00',
           messages: [
             {
               date: '2023-03-17T15:21:08.644+01:00',
@@ -41,6 +44,9 @@ createApp({
           name: 'Fabio',
           avatar: 'img/avatar_2.jpg',
           visible: true,
+          onlineStatus: false,
+          writing: false,
+          lastEnter: '2023-03-17T15:24:08.644+01:00',
           messages: [
             {
               date: '2023-03-17T15:26:08.644+01:00',
@@ -63,6 +69,9 @@ createApp({
           name: 'Samuele',
           avatar: 'img/avatar_3.jpg',
           visible: true,
+          onlineStatus: false,
+          writing: false,
+          lastEnter: '2023-03-17T15:24:08.644+01:00',
           messages: [
             {
               date: '2023-03-17T15:21:08.644+01:00',
@@ -85,6 +94,9 @@ createApp({
           name: 'Alessandro B.',
           avatar: 'img/avatar_4.jpg',
           visible: true,
+          onlineStatus: false,
+          writing: false,
+          lastEnter: '2023-03-17T15:24:08.644+01:00',
           messages: [
             {
               date: '2023-03-17T15:21:08.644+01:00',
@@ -102,6 +114,9 @@ createApp({
           name: 'Alessandro L.',
           avatar: 'img/avatar_5.jpg',
           visible: true,
+          onlineStatus: false,
+          writing: false,
+          lastEnter: '2023-03-17T15:24:08.644+01:00',
           messages: [
             {
               date: '2023-03-17T12:26:08.644+01:00',
@@ -119,6 +134,9 @@ createApp({
           name: 'Claudia',
           avatar: 'img/avatar_6.jpg',
           visible: true,
+          onlineStatus: false,
+          writing: false,
+          lastEnter: '2023-03-17T15:24:08.644+01:00',
           messages: [
             {
               date: '2023-03-17T11:23:08.644+01:00',
@@ -141,6 +159,9 @@ createApp({
           name: 'Federico',
           avatar: 'img/avatar_7.jpg',
           visible: true,
+          onlineStatus: false,
+          writing: false,
+          lastEnter: '2023-03-17T15:24:08.644+01:00',
           messages: [
             {
               date: '2023-03-17T9:12:08.644+01:00',
@@ -158,6 +179,9 @@ createApp({
           name: 'Davide',
           avatar: 'img/avatar_8.jpg',
           visible: true,
+          onlineStatus: false,
+          writing: false,
+          lastEnter: '2023-03-17T15:24:08.644+01:00',
           messages: [
 
           ]
@@ -195,6 +219,16 @@ createApp({
     },
     // RISPOSTA AUTOMATICA DA PARTE DEL PC 
     autoMessage() {
+      
+      // SIMULIAMO L'ACCESSO DEL BOT 
+      setTimeout(() => {
+        this.contacts[this.activeContact].onlineStatus=true;
+      }, 2500)
+      // SIMULIAMO LA SCRITTURA DEL BOT 
+      setTimeout(() => {
+        this.contacts[this.activeContact].writing=true;
+      }, 4500)
+      // SIMULIAMO L'INVIO DEL MESSAGGIO DA PARTE DEL BOT
       let newMessage = {
         date: this.dateNow,
         message: 'ho ricevuto il messaggio',
@@ -202,8 +236,14 @@ createApp({
       }
       setTimeout(() => {
         this.scrollBottom('.main');
+        this.contacts[this.activeContact].writing=false;
         this.contacts[this.activeContact].messages.push(newMessage);
-      }, 3000)
+      }, 6000)
+      // L'UTENTE TORNA OFFLINE E SETTA L'ULTIMO ACCESSO
+      setTimeout(() => {
+        this.contacts[this.activeContact].onlineStatus=false;
+        this.contacts[this.activeContact].lastEnter=this.dateNow;
+      }, 8000)
     },
     // FILTRA LA LISTA DI CONTATTI 
     filteredList() {
