@@ -19,6 +19,9 @@ a{
     color: rgb(61, 61, 61);
     font-size: 15px;
 }
+li{
+    list-style: none;
+}
 .inesistent{
     display: none !important;
 }
@@ -92,7 +95,7 @@ a{
     border-radius: 15px 0 0 15px;
     user-select: none;
 }
-#boxChat{
+.boxChat{
     flex-grow: 1;
     height: 100%;
     flex-direction: column;
@@ -100,7 +103,7 @@ a{
     border-radius: 0 15px 15px 0;
     display: none;
 }
-#boxChat.active{
+.boxChat.active{
     display: flex;
 }
 
@@ -178,44 +181,90 @@ a{
 /* BOX CHAT (CORPO DI DESTRA) */
 /* -------------------------- */
 /* HEADER CHAT */
-#boxChat .header{
+.boxChat .header{
     border-left: 1px solid #fafafa;
     border-right: none;
 }
 
 /* MAIN CHAT */
-#boxChat .main{
+.boxChat .main{
     flex-grow: 1;
     overflow-y: auto;
     background-image: url(../img/mine.jpg);
 }
-#boxChat .main .message-row{
-    padding: 20px;
+.boxChat .main .message-row{
+    padding:  5px 20px;
     margin: 3px;
     display: flex;
 }
-#boxChat .main .message-body{
+.boxChat .main .message-body{
     display: inline-block;
     background-color: white;
-    padding: 6px;
+    padding: 6px 12px;
+    padding-right: 33px;
     border-radius: 10px;
-    min-width: 100px;
+    min-width: 140px;
     max-width: 500px;
     overflow-wrap: break-word;
+    position: relative;
 }
-#boxChat .main .message-body .message-data{
+.boxChat .main .message-body .message-data{
    text-align: right;
    padding-top: 4px;
+   position: relative;
+   left: 20px;
 }
-#boxChat .main .message-body.sent{
+.boxChat .main .message-body .message-menu{
+    position: absolute;
+    top: 4px;
+    right: 10px;
+    filter: opacity(0);
+    transition-duration: 0.4s;
+}
+.boxChat .main .message-body:hover .message-menu{
+    filter: opacity(100%);
+    cursor: pointer;
+    z-index: 1;
+    user-select: none;
+}
+
+.boxChat .main .message-body .message-menu-list{
+    position: absolute;
+    right: 0;
+    background-color: white;
+    box-shadow: 0px 0px 9px 5px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    display: none;
+}
+.boxChat .main .message-body .message-menu-list.open{
+    display: block;
+}
+
+
+.boxChat .main .message-body .message-menu-list li{
+    width: 100px;
+    height: 30px;
+    padding: 5px;
+    
+}
+.boxChat .main .message-body .message-menu-list li:hover{
+    background-color: rgb(241, 241, 241);
+}
+.boxChat .main .message-body .message-menu-list li:first-child:hover{
+    border-radius: 10px 10px 0 0;
+}
+.boxChat .main .message-body .message-menu-list li:last-child:hover{
+    border-radius: 0 0 10px 10px;
+}
+.boxChat .main .message-body.sent{
     background-color: rgb(197, 252, 197);
     margin-left: auto;
 }
-#boxChat .main .message-body.recive{
+.boxChat .main .message-body.recive{
     background-color: white;
 }
 /* INVIO MESSAGGI CHAT (FOOTER) */
-#boxChat .footer{
+.boxChat .footer{
     background-color: #f3eeea;
     padding: 15px;
     display: flex;
@@ -223,7 +272,7 @@ a{
     justify-content: center;
     align-items: center;
 }
-#boxChat .footer input{
+.boxChat .footer input{
     height: 40px;
     font-size: 14px;
     flex-grow: 1;
@@ -231,6 +280,6 @@ a{
     border: .3px solid rgb(224, 224, 224);
     border-radius: 8px;
 }
-#boxChat .footer i{
+.boxChat .footer i{
     font-size: 25px;
 }

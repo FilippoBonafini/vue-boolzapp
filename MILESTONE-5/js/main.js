@@ -11,6 +11,7 @@ createApp({
       activeContact: 0,
       newMessage: '',
       searchKey: '',
+      openChatClass: false,
       contacts: [
         {
           name: 'Michele',
@@ -214,7 +215,20 @@ createApp({
       } else {
         return this.contacts;
       }
+    },
+    // APRI I MENU DELLE CHAT 
+    toggleChatMenu(){
+      if(this.openChatClass === false){
+        this.openChatClass = true;
+      }else{
+        this.openChatClass = false;
+      }
+    },
+    deleteMessage(index){
+      // this.contacts[index].messages.splice(index,1);
+      console.log(this.contacts[activeContact].messages[index])
     }
+
 
 
   }

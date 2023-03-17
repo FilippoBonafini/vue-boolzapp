@@ -77,7 +77,7 @@
             <!-- /BOX SINISTRO DEI CONTATTI  -->
 
             <!-- BOX DESTRO DELLA CHAT  -->
-            <div id="boxChat" v-for="(user,index) in contacts" :class="activeVerify(index)">
+            <div class="boxChat" v-for="(user,index) in contacts" :class="activeVerify(index)">
                 <!-- HEADER CHAT  -->
                 <div class="header">
                     <div class="profile-img">
@@ -96,10 +96,19 @@
                 <!-- /HEADER CHAT  -->
                 <!-- CORPO PRINCIPALE CHAT  -->
                 <div class="main">
-                    <div class="message-row" v-for="(message) in user.messages">
+                    <div class="message-row" v-for="(message,index) in user.messages">
                         <div class="message-body" :class="message.status">
                             <div class="message-text">{{message.message}}</div>
                             <div class="message-data text-smaller">12:09</div>
+                            <!-- MENU A COMPARSA NEI MESSAGGI  -->
+                            <div class="message-menu">
+                                <i class="fa-solid fa-chevron-down openMenu" @click="toggleChatMenu()"></i>
+                                <ul class="message-menu-list" :class="{'open': openChatClass}">
+                                    <li>Info</li>
+                                    <li @click="deleteMessage(index)">Delete</li>
+                                </ul>
+                            </div>
+                            <!-- /MENU A COMPARSA NEI MESSAGGI  -->
                         </div>
                     </div>
                 </div>
