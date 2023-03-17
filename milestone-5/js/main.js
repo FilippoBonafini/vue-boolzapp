@@ -157,21 +157,7 @@ createApp({
           avatar: 'img/avatar_8.jpg',
           visible: true,
           messages: [
-            {
-              date: '2023-03-17T21:54:08.644+01:00',
-              message: 'Ciao, andiamo a mangiare la pizza stasera?',
-              status: 'received'
-            },
-            {
-              date: '2023-03-17T22:21:08.644+01:00',
-              message: 'No, l\'ho già mangiata ieri, ordiniamo sushi!',
-              status: 'sent'
-            },
-            {
-              date: '2023-03-17T23:01:08.644+01:00',
-              message: 'OK!!',
-              status: 'received'
-            }
+
           ]
         }
       ]
@@ -194,7 +180,7 @@ createApp({
     // INVIA IL MESSAGGIO 
     sendMessage() {
       let newMessage = {
-        date: this.dataIsoToTime(this.dateNow) ,
+        date: this.dataIsoToTime(this.dateNow),
         message: this.newMessage,
         status: 'sent'
       }
@@ -224,12 +210,30 @@ createApp({
     toggleChatMenu() {
       this.openChatClass = !this.openChatClass;
     },
+    // CHIUDI I MENU DELLE CHAT 
+    closeChatMenu() {
+      this.openChatClass = false;
+    },
     // ELIMINA UN MESSAGGIO 
     deleteMessage(index) {
       this.contacts[this.activeContact].messages.splice(index, 1);
-      console.log(data)
     },
-
+    // DETERMINA IL TESTO DELL'ULTIMO MESSAGGIO INVIATO DA UN UTENTE 
+    lastText(contact) {
+      if (contact.messages.length > 0) {
+        return (contact.messages[contact.messages.length - 1].message)
+      } else {
+        return ('Nessun Messaggio.');
+      }
+    },
+    // DETERMINA LA DATA DELL'ULTIMO MESSAGGIO INVIATO DA UN UTENTE
+    latesData(contact) {
+      if (contact.messages.length > 0) {
+        return (this.dataIsoToTime(contact.messages[contact.messages.length - 1].date))
+      } else {
+        return ('')
+      }
+    }
 
 
   }

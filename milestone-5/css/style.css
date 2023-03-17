@@ -172,6 +172,11 @@ li{
     position: relative;
     max-height: 85px;
 }
+#boxContacts .userList .last-msg{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 #boxContacts .userList .user:hover{
     background-color: rgb(235, 235, 235);
 }
@@ -179,7 +184,7 @@ li{
     background-color: rgb(213, 213, 213);
 }
 #boxContacts .userList .user .name-msg{
-    width: 80%;
+    width: 60%;
     overflow: hidden;
 }
 #boxContacts .userList .user .info{
@@ -238,6 +243,7 @@ li{
 
 .boxChat .main .message-body .message-menu-list{
     position: absolute;
+    top: 15px;
     right: 0;
     background-color: white;
     box-shadow: 0px 0px 9px 5px rgba(0,0,0,0.2);

@@ -71,9 +71,9 @@
                             </div>
                             <div class="name-msg">
                                 <div class="name-user">{{contact.name}}</div>
-                                <div class="last msg text-smal">{{contact.messages[contact.messages.length - 1].message}}</div>
+                                <div class="last-msg text-smal">{{lastText(contact)}}</div>
                             </div>
-                            <div class="info text-smal">{{dataIsoToTime(contact.messages[contact.messages.length - 1].date)}}</div>
+                            <div class="info text-smal">{{latesData(contact)}}</div>
                         </div>
                     </div>
                     <!-- /LISTA DELLE VARIE CHAT -->
@@ -107,11 +107,11 @@
                             <div class="message-text">{{message.message}}</div>
                             <div class="message-data text-smaller">{{dataIsoToTime(message.date)}}</div>
                             <!-- MENU A COMPARSA NEI MESSAGGI  -->
-                            <div class="message-menu">
+                            <div class="message-menu" @mouseleave="closeChatMenu()">
                                 <i class="fa-solid fa-chevron-down openMenu" @click="toggleChatMenu()"></i>
                                 <ul class="message-menu-list" :class="{'open': openChatClass}">
                                     <li>Info</li>
-                                    <li @click="deleteMessage(index)">Delete</li>
+                                    <li @click="deleteMessage(index),toggleChatMenu()">Delete</li>
                                 </ul>
                             </div>
                             <!-- /MENU A COMPARSA NEI MESSAGGI  -->
