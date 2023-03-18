@@ -26,7 +26,7 @@
 <body>
     <div id="screen">
         <!-- APP CONTAINER-------------------------------------------------->
-        <div id="app"  v-cloak>
+        <div id="app" v-cloak>
             <!-- BOX SINISTRO DEI CONTATTI  -->
             <div id="boxContacts">
                 <!-- HEADER CONTATTI  -->
@@ -59,12 +59,12 @@
                     <div class="searchBar">
                         <div class="lente"><i class="fa-solid fa-magnifying-glass"></i></div>
                         <label class="inesistent" for="searchUser">Search User</label>
-                        <input type="text" name="searchUser" id="searchUser" placeholder="Search"
-                             v-model="searchKey" @keyup="filteredList">
+                        <input type="text" name="searchUser" id="searchUser" placeholder="Search" v-model="searchKey"
+                            @keyup="filteredList">
                     </div>
                     <!-- /BARRA DI RICERCA CHAT  -->
                     <!-- LISTA DELLE VARIE CHAT -->
-                    <div class="userList">
+                    <div class="userList" v-if="filteredList().length!==0"  >
                         <div class="user" :class="activeVerify(index)" v-for="(contact,index) in filteredList()"
                             @click="selectUser(index)">
                             <div class="profile-img">
@@ -75,9 +75,13 @@
                                 <div class="last-msg text-smal" v-if="contact.writing">Sta scrivendo...</div>
                                 <div class="last-msg text-smal" v-else>{{lastText(contact)}}</div>
                             </div>
-                            <div class="info text-smal">{{latesData(contact)}}</div>
+                            <div class="info text-smal">{{latesData(contact,index)}}</div>
                         </div>
                     </div>
+                    <div v-else>
+                        NESSUN CONTATTO PRESENTE
+                    </div>
+                    
                     <!-- /LISTA DELLE VARIE CHAT -->
                 </div>
                 <!-- /CORPO PRINCIPALE CONTATTI  -->
@@ -85,7 +89,7 @@
             <!-- /BOX SINISTRO DEI CONTATTI  -->
 
             <!-- BOX DESTRO DELLA CHAT  -->
-            <div class="boxChat">
+            <div class="boxChat" v-if="chatCondition">
                 <!-- HEADER CHAT  -->
                 <div class="header">
                     <div class="profile-img">
@@ -96,7 +100,8 @@
 
                         <div class="text-smal" v-if="contacts[activeContact].writing">Sta scrivendo...</div>
                         <div class="text-smal" v-else-if="contacts[activeContact].onlineStatus">Online</div>
-                        <div class="text-smal" v-else>Ultimo accesso: {{dataIsoToTime(contacts[activeContact].lastEnter)}}</div>
+                        <div class="text-smal" v-else>Ultimo accesso:
+                            {{lastesAcces()}}</div>
 
                     </div>
                     <div class="icons">
@@ -114,9 +119,10 @@
                 <!-- /HEADER CHAT  -->
                 <!-- CORPO PRINCIPALE CHAT  -->
                 <div class="main">
-                    <div class="message-row" v-if="contacts[activeContact].messages.length > 0" v-for="(message,index) in contacts[activeContact].messages">
+                    <div class="message-row" v-if="contacts[activeContact].messages.length > 0"
+                        v-for="(message,index) in contacts[activeContact].messages">
                         <div class="newDate" v-if="dateVerify(index,message)">
-                            <div class="contentDate">{{textDateChange(index,message)}}</div>
+                            <div class="contentDate">{{textDateChange(message)}}</div>
                         </div>
                         <div class="message-body" :class="message.status">
                             <div class="message-text">{{message.message}}</div>
@@ -138,7 +144,7 @@
                     <div class="message-row" v-if="contacts[activeContact].writing">
                         <div class="col-sm-2">
                             <div class="sp sp-3balls"></div>
-                          </div>
+                        </div>
                     </div>
 
                 </div>
@@ -155,6 +161,10 @@
                 <!-- /SEZIONE DI INVIO MESSAGGI CHAT  -->
             </div>
             <!-- /BOX DESTRO DELLA CHAT  -->
+            <!-- SCHERMATA DI PRESENTAZIONE -->
+            <div class="presentation" v-else>
+                INIZIA UNA NUOVA CHAT
+            </div>
         </div>
         <!-- /APP CONTAINER------------------------------------------------->
     </div>
