@@ -238,6 +238,8 @@ i.fa-paper-plane {
     right: 10px;
 }
 
+
+
 /* BOX CHAT (CORPO DI DESTRA) */
 /* -------------------------- */
 /* HEADER CHAT */
@@ -279,6 +281,18 @@ i.fa-paper-plane {
     padding: 5px 20px;
     margin: 3px;
     display: flex;
+    flex-wrap: wrap;
+}
+.boxChat .main .message-row .newDate{
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+.boxChat .main .message-row .contentDate{
+    background-color: rgba(255, 255, 255, 0.671);
+    padding: 2px 40px;
+    border-radius: 100px;
 }
 
 .boxChat .main .message-body {

@@ -115,6 +115,9 @@
                 <!-- CORPO PRINCIPALE CHAT  -->
                 <div class="main">
                     <div class="message-row" v-if="contacts[activeContact].messages.length > 0" v-for="(message,index) in contacts[activeContact].messages">
+                        <div class="newDate" v-if="dateVerify(index,message)">
+                            <div class="contentDate">{{textDateChange(index,message)}}</div>
+                        </div>
                         <div class="message-body" :class="message.status">
                             <div class="message-text">{{message.message}}</div>
                             <div class="message-data text-smaller">{{dataIsoToTime(message.date)}}</div>

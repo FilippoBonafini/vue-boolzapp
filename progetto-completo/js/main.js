@@ -10,7 +10,7 @@ createApp({
   data() {
     return {
       // dateNow: DateTime.now().toISO(), <- NON E' DINAMICA QEUSTA COSA
-      activeContact:0,
+      activeContact: 0,
       newMessage: '',
       searchKey: '',
       openChatClass: false,
@@ -30,7 +30,7 @@ createApp({
               status: 'sent'
             },
             {
-              date: '2023-03-17T15:22:08.644+01:00',
+              date: '2023-02-17T15:22:08.644+01:00',
               message: 'Ricordati di stendere i panni',
               status: 'sent'
             },
@@ -225,7 +225,7 @@ createApp({
           lastEnter: '2023-03-17T15:24:08.644+01:00',
           messages: [
             {
-              date: '2023-03-17T9:12:08.644+01:00',
+              date: '2023-03-17T15:09:08.644+01:00',
               message: 'Fai gli auguri a Martina che è il suo compleanno!',
               status: 'sent'
             },
@@ -257,19 +257,20 @@ createApp({
       return (DateTime.fromISO(dataISO).toFormat('T'));
     },
     // VERIFICA QUAL'E' L'UTENTE ATTIVO E RESTITUISCE LE CLASSI
-    activeVerify(index) {32
+    activeVerify(index) {
+      32
       if (index === this.activeContact) {
         return ('active');
       }
     },
     // SELEZIONA UN UTENTE DAL MENU DI SINSITRA 
-    selectUser(index) { 
-      this.activeContact = index 
+    selectUser(index) {
+      this.activeContact = index
       this.scrollBottom('.main');
     },
     // INVIA IL MESSAGGIO 
     sendMessage() {
-      if (this.newMessage.replace(/\s+/g, '')!=='') {
+      if (this.newMessage.replace(/\s+/g, '') !== '') {
         let newMessage = {
           date: this.dataIsoToTime(DateTime.now().toISO()),
           message: this.newMessage,
@@ -283,15 +284,15 @@ createApp({
     },
     // RISPOSTA AUTOMATICA DA PARTE DEL PC 
     autoMessage() {
-      
+
       // SIMULIAMO L'ACCESSO DEL BOT 
       setTimeout(() => {
-        this.contacts[this.activeContact].onlineStatus=true;
+        this.contacts[this.activeContact].onlineStatus = true;
       }, 2500)
       // SIMULIAMO LA SCRITTURA DEL BOT 
       setTimeout(() => {
         this.scrollBottom('.main');
-        this.contacts[this.activeContact].writing=true;
+        this.contacts[this.activeContact].writing = true;
       }, 4500)
       // SIMULIAMO L'INVIO DEL MESSAGGIO DA PARTE DEL BOT
       let newMessage = {
@@ -301,12 +302,12 @@ createApp({
       }
       setTimeout(() => {
         this.scrollBottom('.main');
-        this.contacts[this.activeContact].writing=false;
+        this.contacts[this.activeContact].writing = false;
         this.contacts[this.activeContact].messages.push(newMessage);
       }, 6000)
       // L'UTENTE TORNA OFFLINE E SETTA L'ULTIMO ACCESSO
       setTimeout(() => {
-        this.contacts[this.activeContact].onlineStatus=false;
+        this.contacts[this.activeContact].onlineStatus = false;
         this.contacts[this.activeContact].lastEnter = DateTime.now().toISO();
       }, 8000)
     },
@@ -362,13 +363,47 @@ createApp({
       this.openMenuClass = false;
     },
     // CANCELLA TUTTA LA CHAT DELL'UTENTE ATTIVO
-    clearChat(){
+    clearChat() {
       this.contacts[this.activeContact].messages.length = 0;
     },
     // CANCELLA IL CONTATTO ATTIVO
-    deleteUser(){
-      this.contacts.splice(this.activeContact,1)
+    deleteUser() {
+      this.contacts.splice(this.activeContact, 1)
       console.log(this.contacts)
+    },
+    // VERIFICO SE INSERIRE LA DATA OPPURE NO 
+    dateVerify(index, message) {
+      let index2
+      if (index === 0) {
+        index2 = 0;
+      } else {
+        index2 = index - 1
+      }
+      DateTime.fromISO(this.contacts[this.activeContact].messages[index2].date).toFormat('D')
+
+      const data1 = DateTime.fromISO(message.date).toFormat('D');
+      const data2 = DateTime.fromISO(this.contacts[this.activeContact].messages[index2].date).toFormat('D')
+
+      if (data1 !== data2 || index === 0) {
+        return true
+      }
+    },
+
+    // TESTO DA INSERIRE NEL BANNER DELLA DATA 
+    textDateChange(index,message){
+
+
+      let dataAttuale = DateTime.now().toFormat('D');
+
+
+      
+      if(DateTime.fromISO(message.date).toFormat('D')===dataAttuale){
+        return ('Oggi')
+      }
+      else {
+        return(DateTime.fromISO(message.date).toFormat('d')+'/'+DateTime.fromISO(message.date).toFormat('LL'))
+      }
+
     }
   }
 }).mount('#app');
