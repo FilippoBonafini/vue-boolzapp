@@ -195,7 +195,7 @@ createApp({
     },
     autoMessage(index) {
       let newMessage = {
-        date: this.dateNow,
+        date: DateTime.now().toISO(),
         message: 'ho ricevuto il messaggio',
         status: 'received'
       }

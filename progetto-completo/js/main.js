@@ -270,7 +270,7 @@ createApp({
     sendMessage() {
       if (this.newMessage.replace(/\s+/g, '')!=='') {
         let newMessage = {
-          date: this.dataIsoToTime(this.dateNow),
+          date: this.dataIsoToTime(DateTime.now().toISO()),
           message: this.newMessage,
           status: 'sent'
         }
@@ -306,7 +306,7 @@ createApp({
       // L'UTENTE TORNA OFFLINE E SETTA L'ULTIMO ACCESSO
       setTimeout(() => {
         this.contacts[this.activeContact].onlineStatus=false;
-        this.contacts[this.activeContact].lastEnter=this.dateNow;
+        this.contacts[this.activeContact].lastEnter=DateTime.now().toISO();
       }, 8000)
     },
     // FILTRA LA LISTA DI CONTATTI 
