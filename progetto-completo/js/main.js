@@ -10,7 +10,7 @@ createApp({
   data() {
     return {
       dateNow: DateTime.now().toISO(),
-      activeContact: 0,
+      activeContact:0,
       newMessage: '',
       searchKey: '',
       openChatClass: false,
@@ -23,6 +23,66 @@ createApp({
           writing: false,
           lastEnter: '2023-03-17T15:24:08.644+01:00',
           messages: [
+            {
+              date: '2023-03-17T15:21:08.644+01:00',
+              message: 'Hai portato a spasso il cane?',
+              status: 'sent'
+            },
+            {
+              date: '2023-03-17T15:22:08.644+01:00',
+              message: 'Ricordati di stendere i panni',
+              status: 'sent'
+            },
+            {
+              date: '2023-03-17T15:24:08.644+01:00',
+              message: 'Tutto fatto!',
+              status: 'received'
+            },
+            {
+              date: '2023-03-17T15:21:08.644+01:00',
+              message: 'Hai portato a spasso il cane?',
+              status: 'sent'
+            },
+            {
+              date: '2023-03-17T15:22:08.644+01:00',
+              message: 'Ricordati di stendere i panni',
+              status: 'sent'
+            },
+            {
+              date: '2023-03-17T15:24:08.644+01:00',
+              message: 'Tutto fatto!',
+              status: 'received'
+            },
+            {
+              date: '2023-03-17T15:21:08.644+01:00',
+              message: 'Hai portato a spasso il cane?',
+              status: 'sent'
+            },
+            {
+              date: '2023-03-17T15:22:08.644+01:00',
+              message: 'Ricordati di stendere i panni',
+              status: 'sent'
+            },
+            {
+              date: '2023-03-17T15:24:08.644+01:00',
+              message: 'Tutto fatto!',
+              status: 'received'
+            },
+            {
+              date: '2023-03-17T15:21:08.644+01:00',
+              message: 'Hai portato a spasso il cane?',
+              status: 'sent'
+            },
+            {
+              date: '2023-03-17T15:22:08.644+01:00',
+              message: 'Ricordati di stendere i panni',
+              status: 'sent'
+            },
+            {
+              date: '2023-03-17T15:24:08.644+01:00',
+              message: 'Tutto fatto!',
+              status: 'received'
+            },
             {
               date: '2023-03-17T15:21:08.644+01:00',
               message: 'Hai portato a spasso il cane?',
@@ -202,7 +262,10 @@ createApp({
       }
     },
     // SELEZIONA UN UTENTE DAL MENU DI SINSITRA 
-    selectUser(index) { this.activeContact = index },
+    selectUser(index) { 
+      this.activeContact = index 
+      this.scrollBottom('.main');
+    },
     // INVIA IL MESSAGGIO 
     sendMessage() {
       if (this.newMessage.replace(/\s+/g, '')!=='') {
@@ -226,6 +289,7 @@ createApp({
       }, 2500)
       // SIMULIAMO LA SCRITTURA DEL BOT 
       setTimeout(() => {
+        this.scrollBottom('.main');
         this.contacts[this.activeContact].writing=true;
       }, 4500)
       // SIMULIAMO L'INVIO DEL MESSAGGIO DA PARTE DEL BOT

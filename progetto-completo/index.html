@@ -126,6 +126,11 @@
                     <div v-else class="no-msg">
                         <div class="msg">Inizia una conversazione con {{contacts[activeContact].name}}</div>
                     </div>
+                    <div class="message-row" v-if="contacts[activeContact].writing">
+                        <div class="col-sm-2">
+                            <div class="sp sp-3balls"></div>
+                          </div>
+                    </div>
 
                 </div>
                 <!-- /CORPO PRINCIPALE CHAT  -->
