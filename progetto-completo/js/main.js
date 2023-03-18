@@ -178,7 +178,7 @@ createApp({
         {
           name: 'Davide',
           avatar: 'img/avatar_8.jpg',
-          visible: true,
+          visible: false,
           onlineStatus: false,
           writing: false,
           lastEnter: '2023-03-17T15:24:08.644+01:00',
@@ -196,7 +196,7 @@ createApp({
       return (DateTime.fromISO(dataISO).toFormat('T'));
     },
     // VERIFICA QUAL'E' L'UTENTE ATTIVO E RESTITUISCE LE CLASSI
-    activeVerify(index) {
+    activeVerify(index) {32
       if (index === this.activeContact) {
         return ('active');
       }
@@ -287,6 +287,7 @@ createApp({
       setTimeout(() => {
         element.scroll({ top: 100000000, behavior: 'smooth' });
       }, 1)
-    }
+    },
+    
   }
 }).mount('#app');

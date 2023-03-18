@@ -72,7 +72,8 @@
                             </div>
                             <div class="name-msg">
                                 <div class="name-user">{{contact.name}}</div>
-                                <div class="last-msg text-smal">{{lastText(contact)}}</div>
+                                <div class="last-msg text-smal" v-if="contact.writing">Sta scrivendo...</div>
+                                <div class="last-msg text-smal" v-else>{{lastText(contact)}}</div>
                             </div>
                             <div class="info text-smal">{{latesData(contact)}}</div>
                         </div>
