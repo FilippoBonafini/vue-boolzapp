@@ -9,11 +9,12 @@ const DateTime = luxon.DateTime;
 createApp({
   data() {
     return {
-      dateNow: DateTime.now().toISO(),
+      // dateNow: DateTime.now().toISO(), <- NON E' DINAMICA QEUSTA COSA
       activeContact:0,
       newMessage: '',
       searchKey: '',
       openChatClass: false,
+      openMenuClass: false,
       contacts: [
         {
           name: 'Michele',
@@ -294,7 +295,7 @@ createApp({
       }, 4500)
       // SIMULIAMO L'INVIO DEL MESSAGGIO DA PARTE DEL BOT
       let newMessage = {
-        date: this.dateNow,
+        date: DateTime.now().toISO(),
         message: 'ho ricevuto il messaggio',
         status: 'received'
       }
@@ -306,7 +307,7 @@ createApp({
       // L'UTENTE TORNA OFFLINE E SETTA L'ULTIMO ACCESSO
       setTimeout(() => {
         this.contacts[this.activeContact].onlineStatus=false;
-        this.contacts[this.activeContact].lastEnter=DateTime.now().toISO();
+        this.contacts[this.activeContact].lastEnter = DateTime.now().toISO();
       }, 8000)
     },
     // FILTRA LA LISTA DI CONTATTI 
@@ -352,6 +353,22 @@ createApp({
         element.scroll({ top: 100000000, behavior: 'smooth' });
       }, 1)
     },
-    
+    // TOGGLE MENU CONTATTO 
+    toggleMenuHeader() {
+      this.openMenuClass = !this.openMenuClass;
+    },
+    // CHIUDI MENU CONTATTO 
+    closeMenuHeader() {
+      this.openMenuClass = false;
+    },
+    // CANCELLA TUTTA LA CHAT DELL'UTENTE ATTIVO
+    clearChat(){
+      this.contacts[this.activeContact].messages.length = 0;
+    },
+    // CANCELLA IL CONTATTO ATTIVO
+    deleteUser(){
+      this.contacts.splice(this.activeContact,1)
+      console.log(this.contacts)
+    }
   }
 }).mount('#app');

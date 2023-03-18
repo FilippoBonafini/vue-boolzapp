@@ -240,8 +240,30 @@ i.fa-paper-plane {
 .boxChat .header {
     border-left: 1px solid #fafafa;
     border-right: none;
+    position: relative;
 }
+.boxChat .header .dropdownMenu{
+    position: absolute;
+    z-index: 999;
+    background-color: white;
+    top: 50px;
+    right: 5px;
+    border-radius: 5px;
+    width: 300px;
+    box-shadow: 0px 0px 9px 5px rgba(0, 0, 0, 0.2);
+    display: none;
 
+}
+.boxChat .header .dropdownMenu.active{
+    display: block;
+}
+.boxChat .header .dropdownMenu li{
+    cursor: pointer;
+    padding: 10px 20px;
+}
+.boxChat .header .dropdownMenu li:hover{
+    background-color: rgb(223, 221, 221);
+}
 /* MAIN CHAT */
 .boxChat .main {
     flex-grow: 1;

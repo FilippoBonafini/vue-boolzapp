@@ -102,7 +102,13 @@
                     <div class="icons">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         <i class="fa-solid fa-paperclip"></i>
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                        <i class="fa-solid fa-ellipsis-vertical" @click="toggleMenuHeader()"></i>
+                        <div class="dropdownMenu" :class="{'active': openMenuClass}" @mouseleave="closeMenuHeader()">
+                            <ul>
+                                <li @click="clearChat()">Cancella chat</li>
+                                <li @click="deleteUser()">Cancella contatto</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <!-- /HEADER CHAT  -->
