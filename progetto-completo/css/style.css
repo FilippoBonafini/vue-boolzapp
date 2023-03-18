@@ -16,6 +16,10 @@ body {
     width: 100vw;
 }
 
+[v-cloak] {
+    display: none !important;
+  }
+
 a {
     color: rgb(61, 61, 61);
     font-size: 15px;
@@ -291,7 +295,7 @@ i.fa-paper-plane {
 
 .boxChat .main .no-msg {
     display: flex;
-    height: 30%;
+    height: 100px;
     align-items: center;
     justify-content: center;
 }

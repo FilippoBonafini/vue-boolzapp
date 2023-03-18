@@ -26,7 +26,7 @@
 <body>
     <div id="screen">
         <!-- APP CONTAINER-------------------------------------------------->
-        <div id="app">
+        <div id="app"  v-cloak>
             <!-- BOX SINISTRO DEI CONTATTI  -->
             <div id="boxContacts">
                 <!-- HEADER CONTATTI  -->
@@ -105,8 +105,8 @@
                         <i class="fa-solid fa-ellipsis-vertical" @click="toggleMenuHeader()"></i>
                         <div class="dropdownMenu" :class="{'active': openMenuClass}" @mouseleave="closeMenuHeader()">
                             <ul>
-                                <li @click="clearChat()">Cancella chat</li>
-                                <li @click="deleteUser()">Cancella contatto</li>
+                                <li @click="clearChat(),toggleMenuHeader()">Cancella chat</li>
+                                <li @click="deleteUser(),toggleMenuHeader()">Cancella contatto</li>
                             </ul>
                         </div>
                     </div>
