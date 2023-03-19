@@ -64,7 +64,7 @@
                     </div>
                     <!-- /BARRA DI RICERCA CHAT  -->
                     <!-- LISTA DELLE VARIE CHAT -->
-                    <div class="userList" v-if="filteredList().length!==0"  >
+                    <div class="userList" v-if="filteredList().length!==0">
                         <div class="user" :class="activeVerify(index)" v-for="(contact,index) in filteredList()"
                             @click="selectUser(index)">
                             <div class="profile-img">
@@ -78,10 +78,11 @@
                             <div class="info text-smal">{{latesData(contact,index)}}</div>
                         </div>
                     </div>
-                    <div v-else>
-                        NESSUN CONTATTO PRESENTE
+                    <div class="noContacts" v-else>
+                        <h2>Nessun contatto</h2>
+                        <img src="img/noContacts.png" alt="">
                     </div>
-                    
+
                     <!-- /LISTA DELLE VARIE CHAT -->
                 </div>
                 <!-- /CORPO PRINCIPALE CONTATTI  -->
@@ -163,13 +164,16 @@
             <!-- /BOX DESTRO DELLA CHAT  -->
             <!-- SCHERMATA DI PRESENTAZIONE -->
             <div class="presentation" v-else>
-                INIZIA UNA NUOVA CHAT
+                <h2>Seleziona un contatto</h2>
+                <img src="img/newChat.png" alt="">
             </div>
         </div>
         <!-- /APP CONTAINER------------------------------------------------->
     </div>
 
     <!-- IMPORT JAVASCRIPT---------------------------------------------->
+    <!-- vue-emoji-picker -->
+    <!-- <script src="https://unpkg.com/vue-emoji-picker/dist/vue-emoji-picker.js"></script> -->
     <!-- LUXON  -->
     <script src="https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js"></script>
     <!--VUE-->

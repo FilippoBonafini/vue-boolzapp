@@ -1,6 +1,7 @@
 'use strict';
 
 // INIZIALIZZIAMO VUE 
+// Vue.use(EmojiPicker)
 const { createApp } = Vue
 const DateTime = luxon.DateTime;
 
@@ -306,6 +307,12 @@ createApp({
         this.scrollBottom();
         this.contacts[this.activeContact].writing = false;
         this.contacts[this.activeContact].messages.push(newMessage);
+        // SPOSTIAMO LA CHAT IN PRIMA POSIZIONE
+        const elementToMove = this.contacts.splice(this.activeContact,1)[0]
+        this.contacts.unshift(elementToMove);
+        console.log(this.contacts)
+        this.activeContact=0
+        this.scrollTop()
       }, 6000)
       // L'UTENTE TORNA OFFLINE E SETTA L'ULTIMO ACCESSO
       setTimeout(() => {
@@ -365,13 +372,23 @@ createApp({
         return ((dateLastEnter)+' alle '+(this.dataIsoToTime(this.contacts[this.activeContact].lastEnter)))
       }
     },
-    // FUNZIONE CHE SROLLA AUTOMATICAMENTE LA PAGINA§ 
+    // FUNZIONE CHE SROLLA AUTOMATICAMENTE LA PAGINA IN GIU
     scrollBottom() {
       setTimeout(() => {
         let element = document.querySelector('.boxChat .main')
         element.scroll({ top: 100000000, behavior: 'smooth' });
       }, 1)
     },
+      // FUNZIONE CHE SROLLA AUTOMATICAMENTE LA PAGINA IN SU
+      scrollTop() {
+        setTimeout(() => {
+          let element = document.querySelector('#boxContacts .userList')
+          element.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        }, 1)
+      },
     // TOGGLE MENU CONTATTO 
     toggleMenuHeader() {
       this.openMenuClass = !this.openMenuClass;
