@@ -283,10 +283,10 @@ createApp({
         this.contacts[this.activeContact].messages.push(newMessage);
         this.newMessage = '';
         // SPOSTIAMO LA CHAT IN PRIMA POSIZIONE
-        const elementToMove = this.contacts.splice(this.activeContact,1)[0]
+        const elementToMove = this.contacts.splice(this.activeContact, 1)[0]
         this.contacts.unshift(elementToMove);
         console.log(this.contacts)
-        this.activeContact=0
+        this.activeContact = 0
         this.scrollTop()
 
         this.autoMessage();
@@ -315,10 +315,10 @@ createApp({
         this.contacts[this.activeContact].writing = false;
         this.contacts[this.activeContact].messages.push(newMessage);
         // SPOSTIAMO LA CHAT IN PRIMA POSIZIONE
-        const elementToMove = this.contacts.splice(this.activeContact,1)[0]
+        const elementToMove = this.contacts.splice(this.activeContact, 1)[0]
         this.contacts.unshift(elementToMove);
         console.log(this.contacts)
-        this.activeContact=0
+        this.activeContact = 0
         this.scrollTop()
       }, 6000)
       // L'UTENTE TORNA OFFLINE E SETTA L'ULTIMO ACCESSO
@@ -373,10 +373,10 @@ createApp({
     lastesAcces() {
       let dateNow = DateTime.now().toFormat('D');
       let dateLastEnter = DateTime.fromISO(this.contacts[this.activeContact].lastEnter).toFormat('D');
-      if(dateNow === dateLastEnter){
-        return(this.dataIsoToTime(this.contacts[this.activeContact].lastEnter))
-      }else{
-        return ((dateLastEnter)+' alle '+(this.dataIsoToTime(this.contacts[this.activeContact].lastEnter)))
+      if (dateNow === dateLastEnter) {
+        return (this.dataIsoToTime(this.contacts[this.activeContact].lastEnter))
+      } else {
+        return ((dateLastEnter) + ' alle ' + (this.dataIsoToTime(this.contacts[this.activeContact].lastEnter)))
       }
     },
     // FUNZIONE CHE SROLLA AUTOMATICAMENTE LA PAGINA IN GIU
@@ -386,16 +386,16 @@ createApp({
         element.scroll({ top: 100000000, behavior: 'smooth' });
       }, 1)
     },
-      // FUNZIONE CHE SROLLA AUTOMATICAMENTE LA PAGINA IN SU
-      scrollTop() {
-        setTimeout(() => {
-          let element = document.querySelector('#boxContacts .userList')
-          element.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-          });
-        }, 1)
-      },
+    // FUNZIONE CHE SROLLA AUTOMATICAMENTE LA PAGINA IN SU
+    scrollTop() {
+      setTimeout(() => {
+        let element = document.querySelector('#boxContacts .userList')
+        element.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }, 1)
+    },
     // TOGGLE MENU CONTATTO 
     toggleMenuHeader() {
       this.openMenuClass = !this.openMenuClass;
@@ -410,19 +410,20 @@ createApp({
     },
     // CANCELLA IL CONTATTO ATTIVO
     deleteUser() {
-      if(this.contacts.length === this.activeContact + 1){
-        this.activeContact --
-
-        this.contacts.splice(this.contacts.length - 1, 1)
-        
-      }
-      else if (this.contacts.length > 1) {
-        this.contacts.splice(this.activeContact, 1)
-      }
-      else {
+      // SE RIMANE SOLO UN CONTATTO NELL'ELENCO 
+      if (this.contacts.length <= 1) {
         this.contacts.length = 0;
         this.chatCondition = false;
         this.activeContact = -1;
+      }
+      // SE IL CONTATTO E' L'ULTIMO DELL'ELENCO
+      else if (this.contacts.length === this.activeContact + 1) {
+        this.activeContact--
+        this.contacts.splice(this.contacts.length - 1, 1)
+      }
+      // IN UNA SITUAZIONE NORMALE
+      else {
+        this.contacts.splice(this.activeContact, 1)
       }
     },
     // VERIFICO SE INSERIRE LA DATA OPPURE NO 
