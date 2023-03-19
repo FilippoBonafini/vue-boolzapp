@@ -393,10 +393,28 @@ i.fa-paper-plane {
     background-color: rgb(197, 252, 197);
     margin-left: auto;
 }
-
-.boxChat .main .message-body.recive {
-    background-color: white;
+.boxChat .main .message-body.sent::after{
+    content: '\f04b';
+    font-family: FontAwesome;
+    position: absolute;
+    color: rgb(197, 252, 197);
+    right: -10px;
+    top: 10px;
 }
+
+.boxChat .main .message-body.received {
+    background-color: rgb(255, 255, 255);
+}
+.boxChat .main .message-body.received::after{
+    content: '\f04b';
+    font-family: FontAwesome;
+    position: absolute;
+    color: rgb(255, 255, 255);
+    transform: rotate(180deg);
+    left: -10px;
+    top: 10px;
+}
+
 
 /* INVIO MESSAGGI CHAT (FOOTER) */
 .boxChat .footer {
