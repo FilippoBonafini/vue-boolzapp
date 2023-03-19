@@ -288,7 +288,7 @@ createApp({
         console.log(this.contacts)
         this.activeContact=0
         this.scrollTop()
-        
+
         this.autoMessage();
       }
     },
@@ -410,9 +410,14 @@ createApp({
     },
     // CANCELLA IL CONTATTO ATTIVO
     deleteUser() {
-      if (this.contacts.length > 1) {
+      if(this.contacts.length === this.activeContact + 1){
+        this.activeContact --
+
+        this.contacts.splice(this.contacts.length - 1, 1)
+        
+      }
+      else if (this.contacts.length > 1) {
         this.contacts.splice(this.activeContact, 1)
-        console.log(this.contacts)
       }
       else {
         this.contacts.length = 0;
