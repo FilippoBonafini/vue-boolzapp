@@ -5,7 +5,6 @@
 const { createApp } = Vue
 const DateTime = luxon.DateTime;
 
-
 // STRUTTURA DI VUE 
 createApp({
   data() {
