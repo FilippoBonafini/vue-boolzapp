@@ -17,6 +17,12 @@ createApp({
       searchKey: '',
       openChatClass: false,
       openMenuClass: false,
+      randomMessages:[
+        'Heilà ciaoo!',
+        'Io sto bene tu?',
+        'Ti ho detto di non scrivermi più!',
+        'Volareeeee'
+      ],
       contacts: [
         {
           name: 'Michele',
@@ -292,6 +298,10 @@ createApp({
         this.autoMessage();
       }
     },
+    // NUMERO CASUALE 
+    randomNumber(max){
+      return Math.floor(Math.random() * (max - 0 + 1));
+    },
     // RISPOSTA AUTOMATICA DA PARTE DEL PC 
     autoMessage() {
 
@@ -307,7 +317,7 @@ createApp({
       // SIMULIAMO L'INVIO DEL MESSAGGIO DA PARTE DEL BOT
       let newMessage = {
         date: DateTime.now().toISO(),
-        message: 'ho ricevuto il messaggio',
+        message: this.randomMessages[this.randomNumber(this.randomMessages.length - 1)],
         status: 'received'
       }
       setTimeout(() => {
