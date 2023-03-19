@@ -282,6 +282,13 @@ createApp({
         this.scrollBottom()
         this.contacts[this.activeContact].messages.push(newMessage);
         this.newMessage = '';
+        // SPOSTIAMO LA CHAT IN PRIMA POSIZIONE
+        const elementToMove = this.contacts.splice(this.activeContact,1)[0]
+        this.contacts.unshift(elementToMove);
+        console.log(this.contacts)
+        this.activeContact=0
+        this.scrollTop()
+        
         this.autoMessage();
       }
     },
