@@ -37,21 +37,6 @@ createApp({
               status: 'sent'
             },
             {
-              date: '2023-02-17T15:22:08.644+01:00',
-              message: 'Ricordati di stendere i panni',
-              status: 'sent'
-            },
-            {
-              date: '2023-03-17T15:24:08.644+01:00',
-              message: 'Tutto fatto!',
-              status: 'received'
-            },
-            {
-              date: '2023-03-17T15:21:08.644+01:00',
-              message: 'Hai portato a spasso il cane?',
-              status: 'sent'
-            },
-            {
               date: '2023-03-17T15:22:08.644+01:00',
               message: 'Ricordati di stendere i panni',
               status: 'sent'
@@ -62,47 +47,32 @@ createApp({
               status: 'received'
             },
             {
-              date: '2023-03-17T15:21:08.644+01:00',
+              date: '2023-03-18T15:21:08.644+01:00',
               message: 'Hai portato a spasso il cane?',
               status: 'sent'
             },
             {
-              date: '2023-03-17T15:22:08.644+01:00',
+              date: '2023-03-18T15:22:08.644+01:00',
               message: 'Ricordati di stendere i panni',
               status: 'sent'
             },
             {
-              date: '2023-03-17T15:24:08.644+01:00',
+              date: '2023-03-18T15:24:08.644+01:00',
               message: 'Tutto fatto!',
               status: 'received'
             },
             {
-              date: '2023-03-17T15:21:08.644+01:00',
+              date: '2023-03-19T15:21:08.644+01:00',
               message: 'Hai portato a spasso il cane?',
               status: 'sent'
             },
             {
-              date: '2023-03-17T15:22:08.644+01:00',
+              date: '2023-03-19T15:22:08.644+01:00',
               message: 'Ricordati di stendere i panni',
               status: 'sent'
             },
             {
-              date: '2023-03-17T15:24:08.644+01:00',
-              message: 'Tutto fatto!',
-              status: 'received'
-            },
-            {
-              date: '2023-03-17T15:21:08.644+01:00',
-              message: 'Hai portato a spasso il cane?',
-              status: 'sent'
-            },
-            {
-              date: '2023-03-17T15:22:08.644+01:00',
-              message: 'Ricordati di stendere i panni',
-              status: 'sent'
-            },
-            {
-              date: '2023-03-17T15:24:08.644+01:00',
+              date: '2023-03-19T15:24:08.644+01:00',
               message: 'Tutto fatto!',
               status: 'received'
             }
@@ -117,17 +87,17 @@ createApp({
           lastEnter: '2023-03-17T15:24:08.644+01:00',
           messages: [
             {
-              date: '2023-03-17T15:26:08.644+01:00',
+              date: '2023-03-15T15:26:08.644+01:00',
               message: 'Ciao come stai?',
               status: 'sent'
             },
             {
-              date: '2023-03-17T15:27:08.644+01:00',
+              date: '2023-03-15T15:27:08.644+01:00',
               message: 'Bene grazie! Stasera ci vediamo?',
               status: 'received'
             },
             {
-              date: '2023-03-17T15:42:08.644+01:00',
+              date: '2023-03-15T15:42:08.644+01:00',
               message: 'Mi piacerebbe ma devo andare a fare la spesa.',
               status: 'sent'
             }
@@ -142,17 +112,17 @@ createApp({
           lastEnter: '2023-03-17T15:24:08.644+01:00',
           messages: [
             {
-              date: '2023-03-17T15:21:08.644+01:00',
+              date: '2023-03-14T15:21:08.644+01:00',
               message: 'La Marianna va in campagna',
               status: 'received'
             },
             {
-              date: '2023-03-17T15:22:08.644+01:00',
+              date: '2023-03-14T15:22:08.644+01:00',
               message: 'Sicuro di non aver sbagliato chat?',
               status: 'sent'
             },
             {
-              date: '2023-03-17T15:24:08.644+01:00',
+              date: '2023-03-14T15:24:08.644+01:00',
               message: 'Ah scusa!',
               status: 'received'
             }
@@ -167,12 +137,12 @@ createApp({
           lastEnter: '2023-03-17T15:24:08.644+01:00',
           messages: [
             {
-              date: '2023-03-17T15:21:08.644+01:00',
+              date: '2023-03-13T15:21:08.644+01:00',
               message: 'Lo sai che ha aperto una nuova pizzeria?',
               status: 'sent'
             },
             {
-              date: '2023-03-17T15:25:08.644+01:00',
+              date: '2023-03-13T15:25:08.644+01:00',
               message: 'Si, ma preferirei andare al cinema',
               status: 'received'
             }
@@ -187,12 +157,12 @@ createApp({
           lastEnter: '2023-03-17T15:24:08.644+01:00',
           messages: [
             {
-              date: '2023-03-17T12:26:08.644+01:00',
+              date: '2023-03-12T12:26:08.644+01:00',
               message: 'Ricordati di chiamare la nonna',
               status: 'sent'
             },
             {
-              date: '2023-03-17T15:26:08.644+01:00',
+              date: '2023-03-12T15:26:08.644+01:00',
               message: 'Va bene, stasera la sento',
               status: 'received'
             }
@@ -207,12 +177,12 @@ createApp({
           lastEnter: '2023-03-17T15:24:08.644+01:00',
           messages: [
             {
-              date: '2023-03-17T11:23:08.644+01:00',
+              date: '2023-03-11T11:23:08.644+01:00',
               message: 'Ciao Claudia, hai novità?',
               status: 'sent'
             },
             {
-              date: '2023-03-17T12:24:08.644+01:00',
+              date: '2023-03-11T12:24:08.644+01:00',
               message: 'Non ancora',
               status: 'received'
             },
@@ -232,12 +202,12 @@ createApp({
           lastEnter: '2023-03-17T15:24:08.644+01:00',
           messages: [
             {
-              date: '2023-03-17T15:09:08.644+01:00',
+              date: '2023-03-10T15:09:08.644+01:00',
               message: 'Fai gli auguri a Martina che è il suo compleanno!',
               status: 'sent'
             },
             {
-              date: '2023-03-17T10:02:08.644+01:00',
+              date: '2023-03-10T10:02:08.644+01:00',
               message: 'Grazie per avermelo ricordato, le scrivo subito!',
               status: 'received'
             }
