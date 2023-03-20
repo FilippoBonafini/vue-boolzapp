@@ -347,6 +347,7 @@ i.fa-paper-plane {
     display: flex;
     justify-content: center;
     user-select:none;
+    padding-top: 20px;
 }
 .boxChat .main .message-row .contentDate{
     background-color: rgba(255, 255, 255, 0.671);
