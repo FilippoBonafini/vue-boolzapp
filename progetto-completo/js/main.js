@@ -34,47 +34,17 @@ createApp({
           lastEnter: '10/01/2020 15:30:55',
           messages: [
             {
-              date: '10/01/2020 15:30:55',
+              date: '19/03/2023, 15:30:55',
               message: 'Hai portato a spasso il cane?',
               status: 'sent'
             },
             {
-              date: '10/01/2020 15:30:55',
+              date: '19/03/2023 15:31:55',
               message: 'Ricordati di stendere i panni',
               status: 'sent'
             },
             {
-              date: '10/01/2020 15:30:55',
-              message: 'Tutto fatto!',
-              status: 'received'
-            },
-            {
-              date: '10/01/2020 15:30:55',
-              message: 'Hai portato a spasso il cane?',
-              status: 'sent'
-            },
-            {
-              date: '10/01/2020 15:30:55',
-              message: 'Ricordati di stendere i panni',
-              status: 'sent'
-            },
-            {
-              date: '10/01/2020 15:30:55',
-              message: 'Tutto fatto!',
-              status: 'received'
-            },
-            {
-              date: '10/01/2020 15:30:55',
-              message: 'Hai portato a spasso il cane?',
-              status: 'sent'
-            },
-            {
-              date: '10/01/2020 15:30:55',
-              message: 'Ricordati di stendere i panni',
-              status: 'sent'
-            },
-            {
-              date: '10/01/2020 15:31:55',
+              date: '10/03/2023 15:30:55',
               message: 'Tutto fatto!',
               status: 'received'
             }
@@ -234,14 +204,25 @@ createApp({
 
     // DATE STRING IN ISO 
     dateStringToIso(data) {
-      const dataElaboration = new Date(data)
-      let giorno = dataElaboration.getDate();
-      let mese = dataElaboration.getMonth();
-      dataElaboration.setDate(mese + 1);
-      dataElaboration.setMonth(giorno - 1);
+      const newData = (data.substring(3,6) + data.substring(0,2) + data.substring(5))
+      const dataElaboration = new Date(newData)
       return (dataElaboration.toISOString())
-
     },
+
+    dateIsoToString(dataISO){
+      const data = new Date(dataISO);
+      console.log(data);
+
+      const giorno = data.getDate().toString().padStart(2, '0');
+      const mese = (data.getMonth() + 1).toString().padStart(2, '0');
+      const anno = data.getFullYear().toString();
+      const ore = data.getHours().toString().padStart(2, '0');
+      const minuti = data.getMinutes().toString().padStart(2, '0');
+      const secondi = data.getSeconds().toString().padStart(2, '0');
+      const dataString = `${giorno}/${mese}/${anno} ${ore}:${minuti}:${secondi}`;
+      return(dataString);
+    },
+
     // TRASFORMA LE DATE ISO IN DATE ES.12:45
     dataIsoToTime(dataISO) {
       return (DateTime.fromISO(this.dateStringToIso(dataISO)).toFormat('T'));
@@ -268,11 +249,10 @@ createApp({
     sendMessage() {
       if (this.newMessage.replace(/\s+/g, '') !== '') {
         let newMessage = {
-          date: DateTime.now().toFormat('ff'),
+          date: this.dateIsoToString(new Date().toISOString()),
           message: this.newMessage,
           status: 'sent'
         }
-        console.log(DateTime.now().toFormat('ff'))
         this.scrollBottom()
         this.contacts[this.activeContact].messages.push(newMessage);
         this.newMessage = '';
@@ -307,7 +287,7 @@ createApp({
       }, 4500)
       // SIMULIAMO L'INVIO DEL MESSAGGIO DA PARTE DEL BOT
       let newMessage = {
-        date: DateTime.now().toISO(),
+        date: this.dateIsoToString(new Date().toISOString()),
         message: this.randomMessages[this.randomNumber(this.randomMessages.length - 1)],
         status: 'received'
       }
@@ -326,9 +306,9 @@ createApp({
       // L'UTENTE TORNA OFFLINE E SETTA L'ULTIMO ACCESSO
       setTimeout(() => {
         this.contacts[user].onlineStatus = false;
-        this.contacts[user].lastEnter = DateTime.now().toFormat('ff');
+        this.contacts[user].lastEnter = this.dateIsoToString(new Date().toISOString());
 
-        
+
       }, 8000)
     },
     // FILTRA LA LISTA DI CONTATTI 
@@ -377,7 +357,7 @@ createApp({
     lastesAcces() {
       let dateNow = DateTime.now().toFormat('D');
       let dateLastEnter = DateTime.fromISO(this.dateStringToIso(this.contacts[this.activeContact].lastEnter)).toFormat('D');
-      
+
       if (dateNow === dateLastEnter) {
         return (this.dataIsoToTime(this.contacts[this.activeContact].lastEnter))
       } else {
@@ -439,7 +419,6 @@ createApp({
       } else {
         index2 = index - 1
       }
-      DateTime.fromISO(this.dateStringToIso(this.contacts[this.activeContact].messages[index2].date)).toFormat('D')
 
       const data1 = DateTime.fromISO(this.dateStringToIso(message.date)).toFormat('D');
       const data2 = DateTime.fromISO(this.dateStringToIso(this.contacts[this.activeContact].messages[index2].date)).toFormat('D')
@@ -452,7 +431,7 @@ createApp({
     // TESTO DA INSERIRE NEL BANNER DELLA DATA 
     textDateChange(message) {
       let dataAttuale = DateTime.now().toFormat('D');
-      if (DateTime.fromISO(message.date).toFormat('D') === dataAttuale) {
+      if (DateTime.fromISO(this.dateStringToIso(message.date)).toFormat('D') === dataAttuale) {
         return ('Oggi')
       }
       else {
