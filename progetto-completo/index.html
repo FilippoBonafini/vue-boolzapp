@@ -20,7 +20,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-</head>
+    <!-- IMPORT EMOKI PICKER  -->
+    <link href="
+    https://cdn.jsdelivr.net/npm/vue3-emoji-picker@1.1.7/dist/style.min.css
+    " rel="stylesheet"></head>
 <!-- CORPO DEL PROGETTO -->
 
 <body>
@@ -154,9 +157,9 @@
                 <!-- SEZIONE DI INVIO MESSAGGI CHAT  -->
                 <div class="footer">
                     <div><i class="fa-regular fa-face-smile"></i></div>
-                    <label class="inesistent" for="message">message</label>
+                    <EmojiPicker :native="true" @select="onSelectEmoji" />                    <label class="inesistent" for="message">message</label>
                     <input type="text" name="message" id="message" v-model="newMessage"
-                        @keyup.enter="sendMessage(),scrollBottom()">
+                        @keyup.enter="sendMessage(),scrollBottom()" v-model="text" @click="show = true">
                     <div v-if="newMessage.replace(/\s+/g, '')===''"><i class="fa-solid fa-microphone"></i></div>
                     <div v-else @click="sendMessage(),autoMessage()"><i class="fa-solid fa-paper-plane"></i></div>
                 </div>
@@ -182,9 +185,6 @@
     <script src="https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js"></script>
     <!--VUE-->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    
-    <script src="https://unpkg.com/vue-emoji-picker/dist/vue-emoji-picker.js"></script>
-
     <!--MY-->
     <script src="js/main.js"></script>
     <!--/IMPORT JAVASCRIPT---------------------------------------------->

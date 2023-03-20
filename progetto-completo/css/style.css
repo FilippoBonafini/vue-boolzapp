@@ -8,6 +8,9 @@
 
 /* COMMON */
 /* ------ */
+
+@import 'vue3-emoji-picker/css';
+
 body {
     font-family: 'Poppins', sans-serif;
     background: rgb(34, 193, 195);

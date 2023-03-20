@@ -5,25 +5,40 @@
 const { createApp } = Vue
 const DateTime = luxon.DateTime;
 
-
-
 // STRUTTURA DI VUE 
 createApp({
+  
   data() {
-    return {
+    
+    return {      
+      // messaggio di attivazione notifiche 
       notification: false,
+
+      // mostrare la chat o no 
       chatCondition: false,
+
+      // la chat attiva 
       activeContact: -1,
+
+      // nuovo messaggio 
       newMessage: '',
+
+      // nuova chiave di ricerca 
       searchKey: '',
+
+      // apertura dei vari menu  
       openChatClass: false,
       openMenuClass: false,
+
+      // messaggi casuali 
       randomMessages: [
         'Heilà ciaoo!',
         'Io sto bene tu?',
         'Ti ho detto di non scrivermi più!',
         'Volareeeee'
       ],
+      
+      // elenco contatti 
       contacts: [
         {
           name: 'Michele',
@@ -202,17 +217,36 @@ createApp({
   },
   methods: {
 
+    // ---------------------------------------------------------------------------------
+    // PARTE ALLE FUNZIONALITA' GENERICHE--------------------------------------------------------- 
+    // ---------------------------------------------------------------------------------
+    onSelectEmoji(emoji) {
+      
+      console.log(emoji)},
+    // FA SPARIRE IL MESSAGGIO DI ATTIVARE LE NOTIFICHE 
+    activeNotification() {
+      this.notification = true
+    },
+
+    // NUMERO CASUALE 
+    randomNumber(max) {
+      return Math.floor(Math.random() * (max - 0 + 1));
+    },
+
+    // ---------------------------------------------------------------------------------
+    // PARTE DEDICATA ALLE DATE--------------------------------------------------------- 
+    // ---------------------------------------------------------------------------------
+
     // DATE STRING IN ISO 
     dateStringToIso(data) {
-      const newData = (data.substring(3,6) + data.substring(0,2) + data.substring(5))
+      const newData = (data.substring(3, 6) + data.substring(0, 2) + data.substring(5))
       const dataElaboration = new Date(newData)
       return (dataElaboration.toISOString())
     },
 
-    dateIsoToString(dataISO){
+    // DATA ISO IN STRING 
+    dateIsoToString(dataISO) {
       const data = new Date(dataISO);
-      console.log(data);
-
       const giorno = data.getDate().toString().padStart(2, '0');
       const mese = (data.getMonth() + 1).toString().padStart(2, '0');
       const anno = data.getFullYear().toString();
@@ -220,19 +254,136 @@ createApp({
       const minuti = data.getMinutes().toString().padStart(2, '0');
       const secondi = data.getSeconds().toString().padStart(2, '0');
       const dataString = `${giorno}/${mese}/${anno} ${ore}:${minuti}:${secondi}`;
-      return(dataString);
+      return (dataString);
     },
 
-    // TRASFORMA LE DATE ISO IN DATE ES.12:45
+    // TRASFORMA LE DATE ISO/STRINGHE IN DATE ES.12:45
     dataIsoToTime(dataISO) {
       return (DateTime.fromISO(this.dateStringToIso(dataISO)).toFormat('T'));
     },
+
+    // DETERMINA LA DATA DELL'ULTIMO MESSAGGIO INVIATO DA UN UTENTE
+    latesData(contact, index) {
+      if (contact.messages.length > 0) {
+        let indexCalc = this.contacts[index].messages.length - 1;
+        let dateNow = DateTime.now().toFormat('D');
+        let dateLastMsg = DateTime.fromISO(this.dateStringToIso(this.contacts[index].messages[indexCalc].date)).toFormat('D');
+
+        if (dateNow === dateLastMsg) {
+          return (this.dataIsoToTime(contact.messages[contact.messages.length - 1].date));
+        } else {
+          return (dateLastMsg)
+        }
+      }
+    },
+
+    // DETERMINA LA DATA DELL'ULTIMO ACCESSO DI UN UTENTE
+    lastesAcces() {
+      let dateNow = DateTime.now().toFormat('D');
+      let dateLastEnter = DateTime.fromISO(this.dateStringToIso(this.contacts[this.activeContact].lastEnter)).toFormat('D');
+
+      if (dateNow === dateLastEnter) {
+        return (this.dataIsoToTime(this.contacts[this.activeContact].lastEnter))
+      } else {
+        return ((dateLastEnter) + ' alle ' + (this.dataIsoToTime(this.contacts[this.activeContact].lastEnter)))
+      }
+    },
+
+    // VERIFICO SE INSERIRE LA DATA OPPURE NO 
+    dateVerify(index, message) {
+      let index2
+      if (index === 0) {
+        index2 = 0;
+      } else {
+        index2 = index - 1
+      }
+      const data1 = DateTime.fromISO(this.dateStringToIso(message.date)).toFormat('D');
+      const data2 = DateTime.fromISO(this.dateStringToIso(this.contacts[this.activeContact].messages[index2].date)).toFormat('D')
+      if (data1 !== data2 || index === 0) {
+        return true
+      }
+    },
+
+    // TESTO DA INSERIRE NEL BANNER DELLA DATA 
+    textDateChange(message) {
+      let dataAttuale = DateTime.now().toFormat('D');
+      if (DateTime.fromISO(this.dateStringToIso(message.date)).toFormat('D') === dataAttuale) {
+        return ('Oggi')
+      }
+      else {
+        return (DateTime.fromISO(this.dateStringToIso(message.date)).toFormat('d') + '/' + DateTime.fromISO(this.dateStringToIso(message.date)).toFormat('LL'))
+      }
+    },
+
+
+
+    // ---------------------------------------------------------------------------------
+    // PARTE DEDICATA AI MENU--------------------------------------------------------- 
+    // ---------------------------------------------------------------------------------
+
+    // APRI I MENU DELLE CHAT 
+    toggleChatMenu() {
+      this.openChatClass = !this.openChatClass;
+    },
+    // CHIUDI I MENU DELLE CHAT 
+    closeChatMenu() {
+      this.openChatClass = false;
+    },
+    // TOGGLE MENU CONTATTO 
+    toggleMenuHeader() {
+      this.openMenuClass = !this.openMenuClass;
+    },
+    // CHIUDI MENU CONTATTO 
+    closeMenuHeader() {
+      this.openMenuClass = false;
+    },
+
+
+
+    // ---------------------------------------------------------------------------------
+    // PARTE DEDICATA ALLE FUNZIONALITA' DEI MENU--------------------------------------------------------- 
+    // ---------------------------------------------------------------------------------
+
+    // ELIMINA UN MESSAGGIO 
+    deleteMessage(index) {
+      this.contacts[this.activeContact].messages.splice(index, 1);
+    },
+    // CANCELLA TUTTA LA CHAT DELL'UTENTE ATTIVO
+    clearChat() {
+      this.contacts[this.activeContact].messages.length = 0;
+    },
+    // CANCELLA IL CONTATTO ATTIVO
+    deleteUser() {
+      // SE RIMANE SOLO UN CONTATTO NELL'ELENCO 
+      if (this.contacts.length <= 1) {
+        this.contacts.length = 0;
+        this.chatCondition = false;
+        this.activeContact = -1;
+      }
+      // SE IL CONTATTO E' L'ULTIMO DELL'ELENCO
+      else if (this.contacts.length === this.activeContact + 1) {
+        this.activeContact--
+        this.contacts.splice(this.contacts.length - 1, 1)
+      }
+      // IN UNA SITUAZIONE NORMALE
+      else {
+        this.contacts.splice(this.activeContact, 1)
+      }
+    },
+
+
+
+    // ---------------------------------------------------------------------------------
+    // PARTE DEDICATA ALL'ELENCO CONTATTI--------------------------------------------------------- 
+    // ---------------------------------------------------------------------------------
+
     // VERIFICA QUAL'E' L'UTENTE ATTIVO E RESTITUISCE LE CLASSI
     activeVerify(index) {
       if (index === this.activeContact && this.searchKey === '') {
         return ('active');
       }
     },
+
     // SELEZIONA UN UTENTE DAL MENU DI SINSITRA 
     selectUser(index) {
       if (this.searchKey === '') {
@@ -245,6 +396,31 @@ createApp({
       this.chatCondition = true
       this.scrollBottom()
     },
+
+    // FILTRA LA LISTA DI CONTATTI 
+    filteredList() {
+      if (this.searchKey !== '') {
+        return this.contacts.filter(element => (element.name).toLowerCase().includes(this.searchKey.toLowerCase()));
+      } else {
+        return this.contacts;
+      }
+    },
+
+    // DETERMINA IL TESTO DELL'ULTIMO MESSAGGIO INVIATO DA UN UTENTE 
+    lastText(contact) {
+      if (contact.messages.length > 0) {
+        return (contact.messages[contact.messages.length - 1].message)
+      } else {
+        return ('Nessun Messaggio.');
+      }
+    },
+
+
+
+    // ---------------------------------------------------------------------------------
+    // PARTE DEDICATA ALL'INVIO DEI MESSAGGI--------------------------------------------------------- 
+    // ---------------------------------------------------------------------------------
+
     // INVIA IL MESSAGGIO 
     sendMessage() {
       if (this.newMessage.replace(/\s+/g, '') !== '') {
@@ -267,10 +443,7 @@ createApp({
 
       }
     },
-    // NUMERO CASUALE 
-    randomNumber(max) {
-      return Math.floor(Math.random() * (max - 0 + 1));
-    },
+
     // RISPOSTA AUTOMATICA DA PARTE DEL PC 
     autoMessage() {
 
@@ -301,6 +474,7 @@ createApp({
         this.contacts.unshift(elementToMove);
         if (this.activeContact === user) {
           this.scrollTop()
+          this.activeContact = 0;
         }
       }, 6000)
       // L'UTENTE TORNA OFFLINE E SETTA L'ULTIMO ACCESSO
@@ -311,59 +485,13 @@ createApp({
 
       }, 8000)
     },
-    // FILTRA LA LISTA DI CONTATTI 
-    filteredList() {
-      if (this.searchKey !== '') {
-        return this.contacts.filter(element => (element.name).toLowerCase().includes(this.searchKey.toLowerCase()));
-      } else {
-        return this.contacts;
-      }
-    },
-    // APRI I MENU DELLE CHAT 
-    toggleChatMenu() {
-      this.openChatClass = !this.openChatClass;
-    },
-    // CHIUDI I MENU DELLE CHAT 
-    closeChatMenu() {
-      this.openChatClass = false;
-    },
-    // ELIMINA UN MESSAGGIO 
-    deleteMessage(index) {
-      this.contacts[this.activeContact].messages.splice(index, 1);
-    },
-    // DETERMINA IL TESTO DELL'ULTIMO MESSAGGIO INVIATO DA UN UTENTE 
-    lastText(contact) {
-      if (contact.messages.length > 0) {
-        return (contact.messages[contact.messages.length - 1].message)
-      } else {
-        return ('Nessun Messaggio.');
-      }
-    },
-    // DETERMINA LA DATA DELL'ULTIMO MESSAGGIO INVIATO DA UN UTENTE
-    latesData(contact, index) {
-      if (contact.messages.length > 0) {
-        let indexCalc = this.contacts[index].messages.length - 1;
-        let dateNow = DateTime.now().toFormat('D');
-        let dateLastMsg = DateTime.fromISO(this.dateStringToIso(this.contacts[index].messages[indexCalc].date)).toFormat('D');
 
-        if (dateNow === dateLastMsg) {
-          return (this.dataIsoToTime(contact.messages[contact.messages.length - 1].date));
-        } else {
-          return (dateLastMsg)
-        }
-      }
-    },
-    // DETERMINA LA DATA DELL'ULTIMO ACCESSO DI UN UTENTE
-    lastesAcces() {
-      let dateNow = DateTime.now().toFormat('D');
-      let dateLastEnter = DateTime.fromISO(this.dateStringToIso(this.contacts[this.activeContact].lastEnter)).toFormat('D');
 
-      if (dateNow === dateLastEnter) {
-        return (this.dataIsoToTime(this.contacts[this.activeContact].lastEnter))
-      } else {
-        return ((dateLastEnter) + ' alle ' + (this.dataIsoToTime(this.contacts[this.activeContact].lastEnter)))
-      }
-    },
+
+    // ---------------------------------------------------------------------------------
+    // PARTE DEDICATA ALLO SROLL AUTOMATICO--------------------------------------------------------- 
+    // ---------------------------------------------------------------------------------
+
     // FUNZIONE CHE SROLLA AUTOMATICAMENTE LA PAGINA IN GIU
     scrollBottom() {
       setTimeout(() => {
@@ -381,68 +509,11 @@ createApp({
         });
       }, 1)
     },
-    // TOGGLE MENU CONTATTO 
-    toggleMenuHeader() {
-      this.openMenuClass = !this.openMenuClass;
-    },
-    // CHIUDI MENU CONTATTO 
-    closeMenuHeader() {
-      this.openMenuClass = false;
-    },
-    // CANCELLA TUTTA LA CHAT DELL'UTENTE ATTIVO
-    clearChat() {
-      this.contacts[this.activeContact].messages.length = 0;
-    },
-    // CANCELLA IL CONTATTO ATTIVO
-    deleteUser() {
-      // SE RIMANE SOLO UN CONTATTO NELL'ELENCO 
-      if (this.contacts.length <= 1) {
-        this.contacts.length = 0;
-        this.chatCondition = false;
-        this.activeContact = -1;
-      }
-      // SE IL CONTATTO E' L'ULTIMO DELL'ELENCO
-      else if (this.contacts.length === this.activeContact + 1) {
-        this.activeContact--
-        this.contacts.splice(this.contacts.length - 1, 1)
-      }
-      // IN UNA SITUAZIONE NORMALE
-      else {
-        this.contacts.splice(this.activeContact, 1)
-      }
-    },
-    // VERIFICO SE INSERIRE LA DATA OPPURE NO 
-    dateVerify(index, message) {
-      let index2
-      if (index === 0) {
-        index2 = 0;
-      } else {
-        index2 = index - 1
-      }
 
-      const data1 = DateTime.fromISO(this.dateStringToIso(message.date)).toFormat('D');
-      const data2 = DateTime.fromISO(this.dateStringToIso(this.contacts[this.activeContact].messages[index2].date)).toFormat('D')
 
-      if (data1 !== data2 || index === 0) {
-        return true
-      }
-    },
 
-    // TESTO DA INSERIRE NEL BANNER DELLA DATA 
-    textDateChange(message) {
-      let dataAttuale = DateTime.now().toFormat('D');
-      if (DateTime.fromISO(this.dateStringToIso(message.date)).toFormat('D') === dataAttuale) {
-        return ('Oggi')
-      }
-      else {
-        return (DateTime.fromISO(this.dateStringToIso(message.date)).toFormat('d') + '/' + DateTime.fromISO(this.dateStringToIso(message.date)).toFormat('LL'))
-      }
-    },
-    // Verifica se il browser supporta le notifiche
-    activeNotification() {
-      this.notification = true
-    }
+
+
   },
-  mounted() {
-  }
+
 }).mount('#app');
