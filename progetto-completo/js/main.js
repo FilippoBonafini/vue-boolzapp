@@ -9,14 +9,14 @@ const DateTime = luxon.DateTime;
 createApp({
   data() {
     return {
-      // dateNow: DateTime.now().toISO(), <- NON E' DINAMICA QEUSTA COSA
+      notification: false,
       chatCondition: false,
       activeContact: -1,
       newMessage: '',
       searchKey: '',
       openChatClass: false,
       openMenuClass: false,
-      randomMessages:[
+      randomMessages: [
         'Heilà ciaoo!',
         'Io sto bene tu?',
         'Ti ho detto di non scrivermi più!',
@@ -265,10 +265,11 @@ createApp({
         this.scrollTop()
 
         this.autoMessage();
+
       }
     },
     // NUMERO CASUALE 
-    randomNumber(max){
+    randomNumber(max) {
       return Math.floor(Math.random() * (max - 0 + 1));
     },
     // RISPOSTA AUTOMATICA DA PARTE DEL PC 
@@ -432,6 +433,11 @@ createApp({
       else {
         return (DateTime.fromISO(message.date).toFormat('d') + '/' + DateTime.fromISO(message.date).toFormat('LL'))
       }
+    },
+    // Verifica se il browser supporta le notifiche
+    activeNotification() {
+      this.notification = true
     }
   }
 }).mount('#app');
+

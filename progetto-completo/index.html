@@ -47,11 +47,11 @@
                 <!-- CORPO PRINCIPALE CONTATTI  -->
                 <div class="main">
                     <!-- AREA NOTIFICHE APP  -->
-                    <div class="notifyAlert">
+                    <div class="notifyAlert" v-if="notification === false">
                         <div class="notifyIcon"><i class="fa-solid fa-bell-slash"></i></div>
                         <div class="notifyInfo">
                             <div class="text-notify">Ricevi notifiche di nuovi messaggi</div>
-                            <div class="link-notify"><a href="#">Attiva notifiche</a></div>
+                            <div class="link-notify"><a href="#" @click="activeNotification()" >Attiva notifiche</a></div>
                         </div>
                     </div>
                     <!-- AREA NOTIFICHE APP  -->
