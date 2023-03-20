@@ -275,14 +275,16 @@ createApp({
     // RISPOSTA AUTOMATICA DA PARTE DEL PC 
     autoMessage() {
 
+      const user = this.activeContact
+
       // SIMULIAMO L'ACCESSO DEL BOT 
       setTimeout(() => {
-        this.contacts[this.activeContact].onlineStatus = true;
+        this.contacts[user].onlineStatus = true;
       }, 2500)
       // SIMULIAMO LA SCRITTURA DEL BOT 
       setTimeout(() => {
         this.scrollBottom();
-        this.contacts[this.activeContact].writing = true;
+        this.contacts[user].writing = true;
       }, 4500)
       // SIMULIAMO L'INVIO DEL MESSAGGIO DA PARTE DEL BOT
       let newMessage = {
@@ -290,21 +292,23 @@ createApp({
         message: this.randomMessages[this.randomNumber(this.randomMessages.length - 1)],
         status: 'received'
       }
+
       setTimeout(() => {
         this.scrollBottom();
-        this.contacts[this.activeContact].writing = false;
-        this.contacts[this.activeContact].messages.push(newMessage);
+        this.contacts[user].writing = false;
+        this.contacts[user].messages.push(newMessage);
         // SPOSTIAMO LA CHAT IN PRIMA POSIZIONE
-        const elementToMove = this.contacts.splice(this.activeContact, 1)[0]
+        const elementToMove = this.contacts.splice(user, 1)[0]
         this.contacts.unshift(elementToMove);
         console.log(this.contacts)
-        this.activeContact = 0
-        this.scrollTop()
+        if (this.activeContact === user) {
+          this.scrollTop()
+        }
       }, 6000)
       // L'UTENTE TORNA OFFLINE E SETTA L'ULTIMO ACCESSO
       setTimeout(() => {
-        this.contacts[this.activeContact].onlineStatus = false;
-        this.contacts[this.activeContact].lastEnter = DateTime.now().toISO();
+        this.contacts[user].onlineStatus = false;
+        this.contacts[user].lastEnter = DateTime.now().toISO();
       }, 8000)
     },
     // FILTRA LA LISTA DI CONTATTI 
