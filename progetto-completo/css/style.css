@@ -248,6 +248,55 @@ i.fa-paper-plane {
     flex-direction: column;
 }
 
+/* RESPONSIVE ASIDE  */
+@media screen and (max-width:900px) {
+    #boxContacts .userList .user .name-msg {
+        display: none;
+    }
+    #boxContacts .userList .user .info {
+        display: none;
+    }
+    #boxContacts .userList .user .profile-img{
+        margin: auto;
+    }
+    .searchBar{
+        display: none;
+    }
+    #boxContacts .header .user-name {
+        display: none;
+    }
+    
+    .header .icons{
+        display: none;
+    }
+    #boxContacts .main .notifyAlert {
+        min-width: 65px;
+        max-width: 65px;
+        height: 65px;
+    }
+    #boxContacts .main .notifyAlert .notifyInfo{
+        display: none;
+    }
+
+    #boxContacts{
+        min-width: 65px;
+        max-width: 65px;
+        min-height: 65px;
+        border-radius: 0;
+    }
+    .boxChat{
+        border-radius: 0;
+    }
+    #app{
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+    }
+    #screen{
+        display: block;
+    }
+}
+
 /* BOX CHAT (CORPO DI DESTRA) */
 /* -------------------------- */
 /* HEADER CHAT */
