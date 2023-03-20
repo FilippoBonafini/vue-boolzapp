@@ -1,9 +1,11 @@
 'use strict';
 
 // INIZIALIZZIAMO VUE 
-// Vue.use(EmojiPicker)
+
 const { createApp } = Vue
 const DateTime = luxon.DateTime;
+
+
 
 // STRUTTURA DI VUE 
 createApp({
@@ -29,50 +31,50 @@ createApp({
           visible: true,
           onlineStatus: false,
           writing: false,
-          lastEnter: '2023-03-17T15:24:08.644+01:00',
+          lastEnter: '10/01/2020 15:30:55',
           messages: [
             {
-              date: '2023-03-17T15:21:08.644+01:00',
+              date: '10/01/2020 15:30:55',
               message: 'Hai portato a spasso il cane?',
               status: 'sent'
             },
             {
-              date: '2023-03-17T15:22:08.644+01:00',
+              date: '10/01/2020 15:30:55',
               message: 'Ricordati di stendere i panni',
               status: 'sent'
             },
             {
-              date: '2023-03-17T15:24:08.644+01:00',
+              date: '10/01/2020 15:30:55',
               message: 'Tutto fatto!',
               status: 'received'
             },
             {
-              date: '2023-03-18T15:21:08.644+01:00',
+              date: '10/01/2020 15:30:55',
               message: 'Hai portato a spasso il cane?',
               status: 'sent'
             },
             {
-              date: '2023-03-18T15:22:08.644+01:00',
+              date: '10/01/2020 15:30:55',
               message: 'Ricordati di stendere i panni',
               status: 'sent'
             },
             {
-              date: '2023-03-18T15:24:08.644+01:00',
+              date: '10/01/2020 15:30:55',
               message: 'Tutto fatto!',
               status: 'received'
             },
             {
-              date: '2023-03-19T15:21:08.644+01:00',
+              date: '10/01/2020 15:30:55',
               message: 'Hai portato a spasso il cane?',
               status: 'sent'
             },
             {
-              date: '2023-03-19T15:22:08.644+01:00',
+              date: '10/01/2020 15:30:55',
               message: 'Ricordati di stendere i panni',
               status: 'sent'
             },
             {
-              date: '2023-03-19T15:24:08.644+01:00',
+              date: '10/01/2020 15:31:55',
               message: 'Tutto fatto!',
               status: 'received'
             }
@@ -84,20 +86,20 @@ createApp({
           visible: true,
           onlineStatus: false,
           writing: false,
-          lastEnter: '2023-03-17T15:24:08.644+01:00',
+          lastEnter: '10/01/2020 15:30:55',
           messages: [
             {
-              date: '2023-03-15T15:26:08.644+01:00',
+              date: '10/01/2020 15:30:55',
               message: 'Ciao come stai?',
               status: 'sent'
             },
             {
-              date: '2023-03-15T15:27:08.644+01:00',
+              date: '10/01/2020 15:30:55',
               message: 'Bene grazie! Stasera ci vediamo?',
               status: 'received'
             },
             {
-              date: '2023-03-15T15:42:08.644+01:00',
+              date: '10/01/2020 15:30:55',
               message: 'Mi piacerebbe ma devo andare a fare la spesa.',
               status: 'sent'
             }
@@ -109,20 +111,20 @@ createApp({
           visible: true,
           onlineStatus: false,
           writing: false,
-          lastEnter: '2023-03-17T15:24:08.644+01:00',
+          lastEnter: '10/01/2020 15:30:55',
           messages: [
             {
-              date: '2023-03-14T15:21:08.644+01:00',
+              date: '10/01/2020 15:30:55',
               message: 'La Marianna va in campagna',
               status: 'received'
             },
             {
-              date: '2023-03-14T15:22:08.644+01:00',
+              date: '10/01/2020 15:30:55',
               message: 'Sicuro di non aver sbagliato chat?',
               status: 'sent'
             },
             {
-              date: '2023-03-14T15:24:08.644+01:00',
+              date: '10/01/2020 15:30:55',
               message: 'Ah scusa!',
               status: 'received'
             }
@@ -134,15 +136,15 @@ createApp({
           visible: true,
           onlineStatus: false,
           writing: false,
-          lastEnter: '2023-03-17T15:24:08.644+01:00',
+          lastEnter: '10/01/2020 15:30:55',
           messages: [
             {
-              date: '2023-03-13T15:21:08.644+01:00',
+              date: '10/01/2020 15:30:55',
               message: 'Lo sai che ha aperto una nuova pizzeria?',
               status: 'sent'
             },
             {
-              date: '2023-03-13T15:25:08.644+01:00',
+              date: '10/01/2020 15:30:55',
               message: 'Si, ma preferirei andare al cinema',
               status: 'received'
             }
@@ -154,15 +156,15 @@ createApp({
           visible: true,
           onlineStatus: false,
           writing: false,
-          lastEnter: '2023-03-17T15:24:08.644+01:00',
+          lastEnter: '10/01/2020 15:30:55',
           messages: [
             {
-              date: '2023-03-12T12:26:08.644+01:00',
+              date: '10/01/2020 15:30:55',
               message: 'Ricordati di chiamare la nonna',
               status: 'sent'
             },
             {
-              date: '2023-03-12T15:26:08.644+01:00',
+              date: '10/01/2020 15:30:55',
               message: 'Va bene, stasera la sento',
               status: 'received'
             }
@@ -174,20 +176,20 @@ createApp({
           visible: true,
           onlineStatus: false,
           writing: false,
-          lastEnter: '2023-03-17T15:24:08.644+01:00',
+          lastEnter: '10/01/2020 15:30:55',
           messages: [
             {
-              date: '2023-03-11T11:23:08.644+01:00',
+              date: '10/01/2020 15:30:55',
               message: 'Ciao Claudia, hai novità?',
               status: 'sent'
             },
             {
-              date: '2023-03-11T12:24:08.644+01:00',
+              date: '10/01/2020 15:30:55',
               message: 'Non ancora',
               status: 'received'
             },
             {
-              date: '2021-03-11T15:09:08.644+01:00',
+              date: '10/01/2020 15:30:55',
               message: 'Nessuna nuova, buona nuova',
               status: 'sent'
             }
@@ -199,15 +201,15 @@ createApp({
           visible: true,
           onlineStatus: false,
           writing: false,
-          lastEnter: '2023-03-17T15:24:08.644+01:00',
+          lastEnter: '10/01/2020 15:30:55',
           messages: [
             {
-              date: '2023-03-10T15:09:08.644+01:00',
+              date: '10/01/2020 15:30:55',
               message: 'Fai gli auguri a Martina che è il suo compleanno!',
               status: 'sent'
             },
             {
-              date: '2023-03-10T10:02:08.644+01:00',
+              date: '10/01/2020 15:30:55',
               message: 'Grazie per avermelo ricordato, le scrivo subito!',
               status: 'received'
             }
@@ -219,7 +221,7 @@ createApp({
           visible: false,
           onlineStatus: false,
           writing: false,
-          lastEnter: '2023-03-17T15:24:08.644+01:00',
+          lastEnter: '10/01/2020 15:30:55',
           messages: [
 
           ]
@@ -229,9 +231,20 @@ createApp({
     }
   },
   methods: {
+
+    // DATE STRING IN ISO 
+    dateStringToIso(data) {
+      const dataElaboration = new Date(data)
+      let giorno = dataElaboration.getDate();
+      let mese = dataElaboration.getMonth();
+      dataElaboration.setDate(mese + 1);
+      dataElaboration.setMonth(giorno - 1);
+      return (dataElaboration.toISOString())
+
+    },
     // TRASFORMA LE DATE ISO IN DATE ES.12:45
     dataIsoToTime(dataISO) {
-      return (DateTime.fromISO(dataISO).toFormat('T'));
+      return (DateTime.fromISO(this.dateStringToIso(dataISO)).toFormat('T'));
     },
     // VERIFICA QUAL'E' L'UTENTE ATTIVO E RESTITUISCE LE CLASSI
     activeVerify(index) {
@@ -241,13 +254,13 @@ createApp({
     },
     // SELEZIONA UN UTENTE DAL MENU DI SINSITRA 
     selectUser(index) {
-      if(this.searchKey === ''){
+      if (this.searchKey === '') {
         this.activeContact = index
-      }else{
+      } else {
         this.activeContact = (this.contacts.indexOf(this.filteredList()[index]))
         this.searchKey = '';
       }
-      
+
       this.chatCondition = true
       this.scrollBottom()
     },
@@ -255,10 +268,11 @@ createApp({
     sendMessage() {
       if (this.newMessage.replace(/\s+/g, '') !== '') {
         let newMessage = {
-          date: this.dataIsoToTime(DateTime.now().toISO()),
+          date: DateTime.now().toFormat('ff'),
           message: this.newMessage,
           status: 'sent'
         }
+        console.log(DateTime.now().toFormat('ff'))
         this.scrollBottom()
         this.contacts[this.activeContact].messages.push(newMessage);
         this.newMessage = '';
@@ -305,7 +319,6 @@ createApp({
         // SPOSTIAMO LA CHAT IN PRIMA POSIZIONE
         const elementToMove = this.contacts.splice(user, 1)[0]
         this.contacts.unshift(elementToMove);
-        console.log(this.contacts)
         if (this.activeContact === user) {
           this.scrollTop()
         }
@@ -313,7 +326,9 @@ createApp({
       // L'UTENTE TORNA OFFLINE E SETTA L'ULTIMO ACCESSO
       setTimeout(() => {
         this.contacts[user].onlineStatus = false;
-        this.contacts[user].lastEnter = DateTime.now().toISO();
+        this.contacts[user].lastEnter = DateTime.now().toFormat('ff');
+
+        
       }, 8000)
     },
     // FILTRA LA LISTA DI CONTATTI 
@@ -349,19 +364,20 @@ createApp({
       if (contact.messages.length > 0) {
         let indexCalc = this.contacts[index].messages.length - 1;
         let dateNow = DateTime.now().toFormat('D');
-        let dateLastMsg = DateTime.fromISO(this.contacts[index].messages[indexCalc].date).toFormat('D');
+        let dateLastMsg = DateTime.fromISO(this.dateStringToIso(this.contacts[index].messages[indexCalc].date)).toFormat('D');
 
         if (dateNow === dateLastMsg) {
           return (this.dataIsoToTime(contact.messages[contact.messages.length - 1].date));
         } else {
-          return (dateLastMsg);
+          return (dateLastMsg)
         }
       }
     },
     // DETERMINA LA DATA DELL'ULTIMO ACCESSO DI UN UTENTE
     lastesAcces() {
       let dateNow = DateTime.now().toFormat('D');
-      let dateLastEnter = DateTime.fromISO(this.contacts[this.activeContact].lastEnter).toFormat('D');
+      let dateLastEnter = DateTime.fromISO(this.dateStringToIso(this.contacts[this.activeContact].lastEnter)).toFormat('D');
+      
       if (dateNow === dateLastEnter) {
         return (this.dataIsoToTime(this.contacts[this.activeContact].lastEnter))
       } else {
@@ -423,10 +439,10 @@ createApp({
       } else {
         index2 = index - 1
       }
-      DateTime.fromISO(this.contacts[this.activeContact].messages[index2].date).toFormat('D')
+      DateTime.fromISO(this.dateStringToIso(this.contacts[this.activeContact].messages[index2].date)).toFormat('D')
 
-      const data1 = DateTime.fromISO(message.date).toFormat('D');
-      const data2 = DateTime.fromISO(this.contacts[this.activeContact].messages[index2].date).toFormat('D')
+      const data1 = DateTime.fromISO(this.dateStringToIso(message.date)).toFormat('D');
+      const data2 = DateTime.fromISO(this.dateStringToIso(this.contacts[this.activeContact].messages[index2].date)).toFormat('D')
 
       if (data1 !== data2 || index === 0) {
         return true
@@ -440,13 +456,14 @@ createApp({
         return ('Oggi')
       }
       else {
-        return (DateTime.fromISO(message.date).toFormat('d') + '/' + DateTime.fromISO(message.date).toFormat('LL'))
+        return (DateTime.fromISO(this.dateStringToIso(message.date)).toFormat('d') + '/' + DateTime.fromISO(this.dateStringToIso(message.date)).toFormat('LL'))
       }
     },
     // Verifica se il browser supporta le notifiche
     activeNotification() {
       this.notification = true
     }
+  },
+  mounted() {
   }
 }).mount('#app');
-

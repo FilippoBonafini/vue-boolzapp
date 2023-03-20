@@ -51,7 +51,8 @@
                         <div class="notifyIcon"><i class="fa-solid fa-bell-slash"></i></div>
                         <div class="notifyInfo">
                             <div class="text-notify">Ricevi notifiche di nuovi messaggi</div>
-                            <div class="link-notify"><a href="#" @click="activeNotification()" >Attiva notifiche</a></div>
+                            <div class="link-notify"><a href="#" @click="activeNotification()">Attiva notifiche</a>
+                            </div>
                         </div>
                     </div>
                     <!-- AREA NOTIFICHE APP  -->
@@ -165,22 +166,25 @@
             <!-- SCHERMATA DI PRESENTAZIONE -->
             <div class="presentation" v-else>
                 <div class="containerPresentation">
-                <h2>Seleziona un contatto</h2>
-                <img src="img/newChat.png" alt="">
-            </div>
+                    <h2>Seleziona un contatto</h2>
+                    <img src="img/newChat.png" alt="">
+                </div>
+
             </div>
         </div>
-        
+
         <!-- /APP CONTAINER------------------------------------------------->
     </div>
 
     <!-- IMPORT JAVASCRIPT---------------------------------------------->
-    <!-- vue-emoji-picker -->
-    <script src="https://unpkg.com/vue-emoji-picker/dist/vue-emoji-picker.js"></script>
+
     <!-- LUXON  -->
     <script src="https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js"></script>
     <!--VUE-->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    
+    <script src="https://unpkg.com/vue-emoji-picker/dist/vue-emoji-picker.js"></script>
+
     <!--MY-->
     <script src="js/main.js"></script>
     <!--/IMPORT JAVASCRIPT---------------------------------------------->
