@@ -235,14 +235,19 @@ createApp({
     },
     // VERIFICA QUAL'E' L'UTENTE ATTIVO E RESTITUISCE LE CLASSI
     activeVerify(index) {
-      32
-      if (index === this.activeContact) {
+      if (index === this.activeContact && this.searchKey === '') {
         return ('active');
       }
     },
     // SELEZIONA UN UTENTE DAL MENU DI SINSITRA 
     selectUser(index) {
-      this.activeContact = index
+      if(this.searchKey === ''){
+        this.activeContact = index
+      }else{
+        this.activeContact = (this.contacts.indexOf(this.filteredList()[index]))
+        this.searchKey = '';
+      }
+      
       this.chatCondition = true
       this.scrollBottom()
     },
